@@ -55,6 +55,7 @@ const createStudent = async (student) => {
     const newStudent = await Student.create(student);
     return newStudent;
   } catch (error) {
+    console.error('Error al crear el estudiante:', error);
     throw new Error('Error al crear el estudiante');
   }
 };
