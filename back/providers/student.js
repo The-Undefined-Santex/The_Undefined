@@ -13,7 +13,7 @@ const getAllStudents = async () => {
         },
         {
           model: User,
-          attributes: ['UserName'],
+          attributes: ['userName'],
         },
         {
           model: Cohort,
@@ -37,7 +37,7 @@ const getStudentById = async (id) => {
         },
         {
           model: User,
-          attributes: ['UserName'],
+          attributes: ['userName'],
         },
         {
           model: Cohort,

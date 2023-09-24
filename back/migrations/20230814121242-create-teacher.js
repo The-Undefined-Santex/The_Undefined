@@ -15,23 +15,23 @@ module.exports = {
       lastName: {
         type: Sequelize.STRING
       },
-      dni: {
-        type: Sequelize.INTEGER
+      document_number: {
+        type: Sequelize.INTEGER,
       },
-      address: {
-        type: Sequelize.STRING
+      id_contact_information: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'ContactInformations',
+          key: 'id'
+        },
       },
-      country: {
-        type: Sequelize.STRING
-      },
-      state: {
-        type: Sequelize.STRING
-      },
-      celNumber: {
-        type: Sequelize.STRING
-      },
-      email: {
-        type: Sequelize.STRING
+      id_user: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
       },
       specialty: {
         type: Sequelize.STRING

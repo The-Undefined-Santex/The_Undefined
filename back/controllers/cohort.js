@@ -1,13 +1,13 @@
 const { cohortService } = require('../services');
 
-const enrollStudentInCourse = async (req, res) => {
-  const { courseId, studentId } = req.body;
+const createCohort = async (req, res) => {
+  const dataCohort = req.body;
 
   try {
-    const cohort = await cohortService.enrollStudentInCourse({ courseId, studentId });
-    return res.status(201).json({ message: 'Estudiante inscripto satisfactioriamente', cohort });
+    const cohort = await cohortService.createCohort(dataCohort);
+    return res.status(201).json({ message: 'Cohort creada satisfactioriamente', cohort });
   } catch (error) {
-    return res.status(500).json({ message: 'Error al asignar un curso al estudiante', error: error.message });
+    return res.status(500).json({ message: 'Error al crear la cohort', error: error.message });
   }
 };
 
@@ -31,7 +31,7 @@ const getCohortById = async (req, res) => {
 };
 
 module.exports = {
-  enrollStudentInCourse,
+  createCohort,
   getAllCohorts,
   getCohortById,
 };

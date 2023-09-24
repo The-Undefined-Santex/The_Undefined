@@ -1,17 +1,49 @@
-const { Teacher } = require('../models');
+const {
+  Teacher, ContactInformation, User, Cohort,
+} = require('../models');
 
 const getAllTeachers = async () => {
   try {
-    const teachers = await Teacher.findAll();
+    const teachers = await Teacher.findAll({
+      include: [
+        {
+          model: ContactInformation,
+          attributes: ['phone_number', 'country', 'state', 'address', 'email'],
+        },
+        {
+          model: User,
+          attributes: ['userName'],
+        },
+        {
+          model: Cohort,
+        },
+      ],
+    });
     return teachers;
   } catch (error) {
+    console.log(error);
+    // throw new Error('Error al obtener los docentes');
     throw new Error('Error al obtener los docentes');
   }
 };
 
 const getTeachersById = async (id) => {
   try {
-    const teacher = await Teacher.findByPk(id);
+    const teacher = await Teacher.findByPk(id, {
+      include: [
+        {
+          model: ContactInformation,
+          attributes: ['phone_number', 'country', 'state', 'address', 'email'],
+        },
+        {
+          model: User,
+          attributes: ['userName'],
+        },
+        {
+          model: Cohort,
+        },
+      ],
+    });
     return teacher;
   } catch (error) {
     throw new Error('Error al obtener el docente');
@@ -34,8 +66,36 @@ const updateTeacher = async (id, teacher) => {
         id,
       },
     });
+
+    // Luego, si es necesario actualizamos la información de contacto
+    if (teacher.ContactInformation) {
+      await ContactInformation.update(teacher.ContactInformation, {
+        where: {
+          id: teacher.id_contact_information,
+        },
+      });
+    }
+    // Y el usuario
+    if (teacher.User) {
+      await User.update(teacher.User, {
+        where: {
+          id: teacher.id_user,
+        },
+      });
+    }
+    if (teacher.Cohorts) {
+      // Si deseamos modificar multiples cohorts, podemos hacerlo de esta manera:
+      // Removemos la asociación de los cohorts existentes con el estudiante
+      // Generamos una nueva
+      const teacherInstance = await Teacher.findByPk(id);
+
+      // Reemplazamos con los cohort nuevos
+      await teacherInstance.setCohorts(teacher.Cohorts.map((cohort) => cohort.id));
+    }
+
     return updatedTeacherCount;
   } catch (error) {
+    console.log(error);
     throw new Error('Error al actualizar profesor');
   }
 };

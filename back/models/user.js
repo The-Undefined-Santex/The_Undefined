@@ -13,7 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasOne(models.Student, {
         foreignKey: 'id_user',
-        sourceKey: 'id',
+      });
+      this.hasOne(models.Teacher, {
+        foreignKey: 'id_user',
       });
     }
   }

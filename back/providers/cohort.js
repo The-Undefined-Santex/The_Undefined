@@ -2,12 +2,13 @@ const { Cohort } = require('../models');
 const { Course } = require('../models');
 const { Student } = require('../models');
 
-const enrollStudentInCourse = async (courseId, studentId) => {
+const createCohort = async (cohort) => {
   try {
-    const enrolledStudent = await Cohort.create(courseId, studentId);
+    const enrolledStudent = await Cohort.create(cohort);
     return enrolledStudent;
   } catch (error) {
-    throw new Error('Error al matricular al estudiante');
+    console.log(error);
+    throw new Error('Error crear la cohort');
   }
 };
 
@@ -51,7 +52,7 @@ const getCohortById = async (cohortId) => {
 };
 
 module.exports = {
-  enrollStudentInCourse,
+  createCohort,
   getAllCohorts,
   getCohortById,
 };

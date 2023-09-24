@@ -1,11 +1,11 @@
 const { cohortProvider } = require('../providers');
 
-const enrollStudentInCourse = (courseId, studentId) => {
+const createCohort = (cohortData) => {
   try {
-    const enrolledStudent = cohortProvider.enrollStudentInCourse(courseId, studentId);
+    const enrolledStudent = cohortProvider.createCohort(cohortData);
     return enrolledStudent;
   } catch (error) {
-    throw new Error('Error al matricular al estudiante');
+    throw new Error('Error al crear la cohort');
   }
 };
 
@@ -28,7 +28,7 @@ const getCohortById = (cohortId) => {
 };
 
 module.exports = {
-  enrollStudentInCourse,
+  createCohort,
   getAllCohorts,
   getCohortById,
 };

@@ -21,6 +21,15 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        phone_number: '987654321',
+        country: 'Country 3',
+        state: 'State 3',
+        address: 'Address 3',
+        email: 'email3@example.com',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ], {});
   },
 

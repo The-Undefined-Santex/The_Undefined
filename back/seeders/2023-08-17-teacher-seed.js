@@ -6,12 +6,9 @@ module.exports = {
       {
         firstName: 'John',
         lastName: 'Doe',
-        dni: 123456789,
-        address: '123 Main St',
-        country: 'USA',
-        state: 'California',
-        celNumber: '123-456-7890',
-        email: 'john@example.com',
+        document_number: 987654321,
+        id_contact_information: 1,
+        id_user: 1,
         specialty: 'Computer Science',
         birthDate: '1990-05-15',
         createdAt: new Date(),
@@ -20,12 +17,9 @@ module.exports = {
       {
         firstName: 'Jane',
         lastName: 'Smith',
-        dni: 987654321,
-        address: '456 Elm St',
-        country: 'USA',
-        state: 'New York',
-        celNumber: '987-654-3210',
-        email: 'jane@example.com',
+        document_number: 987654321,
+        id_contact_information: 2,
+        id_user: 2,
         specialty: 'Mathematics',
         birthDate: '1985-08-22',
         createdAt: new Date(),
@@ -34,18 +28,14 @@ module.exports = {
       {
         firstName: 'Michael',
         lastName: 'Johnson',
-        dni: 456789123,
-        address: '789 Oak St',
-        country: 'USA',
-        state: 'Texas',
-        celNumber: '456-789-1230',
-        email: 'michael@example.com',
+        document_number: 987654321,
+        id_contact_information: 3,
+        id_user: 3,
         specialty: 'Physics',
         birthDate: '1988-02-10',
         createdAt: new Date(),
         updatedAt: new Date()
       },
-      // ... Agregar más datos aquí ...
     ], {});
   },
 
