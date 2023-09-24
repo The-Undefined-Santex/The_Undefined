@@ -27,8 +27,28 @@ const getCohortById = (cohortId) => {
   }
 };
 
+const updateCohort = (cohortId, cohortData) => {
+  try {
+    const updatedCohort = cohortProvider.updateCohort(cohortId, cohortData);
+    return updatedCohort;
+  } catch (error) {
+    throw new Error('Error al actualizar la cohorte');
+  }
+};
+
+const deleteCohort = (cohortId) => {
+  try {
+    const deletedCohort = cohortProvider.deleteCohort(cohortId);
+    return deletedCohort;
+  } catch (error) {
+    throw new Error('Error al eliminar la cohorte');
+  }
+};
+
 module.exports = {
   createCohort,
   getAllCohorts,
   getCohortById,
+  updateCohort,
+  deleteCohort,
 };

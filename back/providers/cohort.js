@@ -1,6 +1,6 @@
-const { Cohort } = require('../models');
-const { Course } = require('../models');
-const { Student } = require('../models');
+const {
+  Cohort, Teacher, Course, Student,
+} = require('../models');
 
 const createCohort = async (cohort) => {
   try {
@@ -16,6 +16,9 @@ const getAllCohorts = async () => {
   try {
     const cohorts = await Cohort.findAll({
       include: [
+        {
+          model: Teacher,
+        },
         {
           model: Course,
         },
@@ -35,6 +38,9 @@ const getCohortById = async (cohortId) => {
     const cohort = await Cohort.findByPk(cohortId, {
       include: [
         {
+          model: Teacher,
+        },
+        {
           model: Course,
         },
         {
@@ -51,8 +57,42 @@ const getCohortById = async (cohortId) => {
   }
 };
 
+const updateCohort = async (cohortId, cohortData) => {
+  try {
+    const updatedCohortCount = await Cohort.update(cohortData, {
+      where: {
+        id: cohortId,
+      },
+    });
+    if (updatedCohortCount === 0) {
+      throw new Error('Cohort no encontrada');
+    }
+    return updatedCohortCount;
+  } catch (error) {
+    throw new Error('Error al actualizar la cohorte');
+  }
+};
+
+const deleteCohort = async (cohortId) => {
+  try {
+    const deletedCohortCount = await Cohort.destroy({
+      where: {
+        id: cohortId,
+      },
+    });
+    if (deletedCohortCount === 0) {
+      throw new Error('Cohort no encontrada');
+    }
+    return deletedCohortCount;
+  } catch (error) {
+    throw new Error('Error al eliminar la cohorte');
+  }
+};
+
 module.exports = {
   createCohort,
   getAllCohorts,
   getCohortById,
+  updateCohort,
+  deleteCohort,
 };

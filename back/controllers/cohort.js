@@ -30,8 +30,31 @@ const getCohortById = async (req, res) => {
   }
 };
 
+const updateCohort = async (req, res) => {
+  const cohortId = req.params.id;
+  const dataCohort = req.body;
+  try {
+    const cohort = await cohortService.updateCohort(cohortId, dataCohort);
+    return res.status(200).json(cohort);
+  } catch (error) {
+    return res.status(404).json({ error: 'Cohorte no encontrada' });
+  }
+};
+
+const deleteCohort = async (req, res) => {
+  const cohortId = req.params.id;
+  try {
+    const cohort = await cohortService.deleteCohort(cohortId);
+    return res.status(200).json(cohort);
+  } catch (error) {
+    return res.status(404).json({ error: 'Cohorte no encontrada' });
+  }
+};
+
 module.exports = {
   createCohort,
   getAllCohorts,
   getCohortById,
+  updateCohort,
+  deleteCohort,
 };
