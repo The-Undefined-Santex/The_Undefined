@@ -22,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
       models.courseDetail.belongsTo(Course, {
         foreignKey: 'courseId',
         target_key: 'id',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
+        // onDelete: 'CASCADE',
+        // onUpdate: 'CASCADE',
       });
     }
   }
@@ -44,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Course',
+    paranoid: true,
   });
   return Course;
 };
