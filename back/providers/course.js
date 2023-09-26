@@ -24,6 +24,7 @@ const getAllCourses = async () => {
         'description',
         'duration',
         'start_date',
+        'capacity',
         'price',
         'due',
         'has_surcharge',
