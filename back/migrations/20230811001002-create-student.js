@@ -50,7 +50,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    });
+      deletedAt: {
+       type: Sequelize.DATE,
+       deletedAtallowNull: true,
+  }
+}, {
+  paranoid: true, // Habilitar borrado lógico
+});
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Students');
