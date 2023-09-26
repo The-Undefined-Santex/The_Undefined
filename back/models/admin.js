@@ -17,6 +17,12 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       });
+      this.belongsTo(models.User, {
+        foreignKey: 'userId',
+        target_key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      });
     }
   }
   Admin.init({
@@ -29,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Admin',
+    paranoid: true,
   });
   return Admin;
 };
