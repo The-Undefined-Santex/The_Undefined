@@ -1,25 +1,28 @@
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Students', {
+    await queryInterface.createTable('Admins', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
-      first_name: {
-        type: Sequelize.STRING,
+      dni: {
+        type: Sequelize.INTEGER
       },
-      last_name: {
-        type: Sequelize.STRING,
+      firstName: {
+        type: Sequelize.STRING
       },
-      document_number: {
-        type: Sequelize.INTEGER,
+      lastName: {
+        type: Sequelize.STRING
+      },
+      birth_date: {
+        type: Sequelize.DATE
       },
       contactInformationId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
           model: 'ContactInformations',
           key: 'id'
@@ -36,29 +39,20 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      birth_date: {
-        type: Sequelize.DATE,
-      },
-      situation: {
-        type: Sequelize.STRING,
-      },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       deletedAt: {
-       type: Sequelize.DATE,
-       deletedAtallowNull: true,
-  }
-}, {
-  paranoid: true, // Habilitar borrado lógico
-});
+        type: Sequelize.DATE
+      }
+    });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Students');
-  },
+    await queryInterface.dropTable('Admins');
+  }
 };

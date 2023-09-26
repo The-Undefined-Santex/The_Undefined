@@ -4,6 +4,7 @@ const courseDetailProvider = require('./courseDetail');
 const teacherProvider = require('./teacher');
 const StudentProvider = require('./student');
 const cohortProvider = require('./cohort');
+const adminProvider = require('./admin');
 
 module.exports = {
   courseProvider,
@@ -12,4 +13,5 @@ module.exports = {
   courseDetailProvider,
   StudentProvider,
   cohortProvider,
+  adminProvider,
 };

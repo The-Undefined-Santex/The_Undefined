@@ -3,13 +3,14 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Student extends Model {
+  class Admin extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      // define association here
       this.belongsTo(models.ContactInformation, {
         foreignKey: 'contactInformationId',
         target_key: 'id',
@@ -22,32 +23,19 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       });
-      this.belongsToMany(models.Cohort, {
-        through: 'CohortStudents',
-        foreignKey: 'studentId',
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-      });
     }
   }
-  Student.init({
-    first_name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
-    document_number: DataTypes.INTEGER,
-    contactInformationId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+  Admin.init({
+    dni: DataTypes.INTEGER,
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
     birth_date: DataTypes.DATE,
-    situation: DataTypes.STRING,
+    contactInformationId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
   }, {
     sequelize,
-    modelName: 'Student',
+    modelName: 'Admin',
     paranoid: true,
   });
-  return Student;
+  return Admin;
 };

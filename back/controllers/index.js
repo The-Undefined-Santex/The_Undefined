@@ -4,6 +4,7 @@ const courseDetailController = require('./courseDetail');
 const teacherController = require('./teacher');
 const studentController = require('./student');
 const cohortController = require('./cohort');
+const adminController = require('./admin');
 
 module.exports = {
   CourseController,
@@ -12,4 +13,5 @@ module.exports = {
   courseDetailController,
   studentController,
   cohortController,
+  adminController,
 };
