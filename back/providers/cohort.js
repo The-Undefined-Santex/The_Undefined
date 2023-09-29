@@ -1,6 +1,7 @@
-const {
-  Cohort, Teacher, Course, Student,
-} = require('../models');
+const { Cohort } = require('../models');
+const { Course } = require('../models');
+const { Student } = require('../models');
+const { Teacher } = require('../models');
 
 const createCohort = async (cohort) => {
   try {
@@ -48,6 +49,7 @@ const getCohortById = async (cohortId) => {
         },
       ],
     });
+
     if (cohort === null) {
       throw new Error('Cohort no encontrada');
     }

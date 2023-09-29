@@ -15,6 +15,7 @@ module.exports = (sequelize) => {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       });
+
       this.belongsTo(models.Teacher, {
         foreignKey: 'teacherId',
         onUpdate: 'CASCADE',

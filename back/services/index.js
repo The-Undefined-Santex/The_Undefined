@@ -4,6 +4,7 @@ const courseDetailService = require('./courseDetail');
 const teacherService = require('./teacher');
 const studentService = require('./student');
 const cohortService = require('./cohort');
+const adminService = require('./admin');
 
 module.exports = {
   courseService,
@@ -12,4 +13,5 @@ module.exports = {
   teacherService,
   studentService,
   cohortService,
+  adminService,
 };

@@ -14,14 +14,16 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.courseDetail,
         { foreignKey: 'courseId' },
         {
-          onDelete: 'cascade',
-          onUpdate: 'cascade',
+          onDelete: 'CASCADE',
+          onUpdate: 'CASCADE',
           hooks: true,
         });
 
       models.courseDetail.belongsTo(Course, {
         foreignKey: 'courseId',
         target_key: 'id',
+        // onDelete: 'CASCADE',
+        // onUpdate: 'CASCADE',
       });
     }
   }
@@ -42,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Course',
+    paranoid: true,
   });
   return Course;
 };

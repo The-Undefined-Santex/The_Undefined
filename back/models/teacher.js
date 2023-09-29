@@ -10,26 +10,33 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
       this.belongsTo(models.ContactInformation, {
-        foreignKey: 'id_contact_information',
-        targetKey: 'id',
+        foreignKey: 'contactInformationId',
+        target_key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       });
       this.belongsTo(models.User, {
-        foreignKey: 'id_user',
-        targetKey: 'id',
+        foreignKey: 'userId',
+        target_key: 'id',
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       });
-      this.hasMany(models.Cohort, { foreignKey: 'teacherId' });
     }
   }
   Teacher.init({
+    dni: DataTypes.INTEGER,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    document_number: DataTypes.INTEGER,
-    id_contact_information: DataTypes.INTEGER,
-    id_user: DataTypes.INTEGER,
-    specialty: DataTypes.STRING,
-    birthDate: DataTypes.DATE,
+    birth_date: DataTypes.DATE,
+    contactInformationId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Teacher',

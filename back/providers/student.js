@@ -1,28 +1,25 @@
 const { Student } = require('../models');
 const { ContactInformation } = require('../models');
 const { User } = require('../models');
-const { Cohort } = require('../models');
 
 const getAllStudents = async () => {
   try {
     const students = await Student.findAll({
+      attributes: ['id', 'first_name', 'last_name', 'document_number', 'birth_date', 'situation'],
       include: [
         {
           model: ContactInformation,
-          attributes: ['phone_number', 'country', 'state', 'address', 'email'],
+          attributes: ['phone_number',
+            'country',
+            'state',
+            'address',
+            'email'],
         },
-        {
-          model: User,
-          attributes: ['userName'],
-        },
-        {
-          model: Cohort,
-        },
+
       ],
     });
     return students;
   } catch (error) {
-    console.error('Error al obtener los estudiantes:', error);
     throw new Error('Error al obtener los estudiantes');
   }
 };
@@ -30,19 +27,19 @@ const getAllStudents = async () => {
 const getStudentById = async (id) => {
   try {
     const student = await Student.findByPk(id, {
+      attributes: ['id', 'first_name', 'last_name', 'document_number', 'birth_date', 'situation'],
       include: [
         {
           model: ContactInformation,
-          attributes: ['phone_number', 'country', 'state', 'address', 'email'],
+          attributes: ['phone_number',
+            'country',
+            'state',
+            'address',
+            'email'],
         },
-        {
-          model: User,
-          attributes: ['userName'],
-        },
-        {
-          model: Cohort,
-        },
+
       ],
+
     });
     return student;
   } catch (error) {
@@ -117,11 +114,14 @@ const updateStudent = async (id, student) => {
 
 const deleteStudent = async (id) => {
   try {
-    const deletedStudentCount = await Student.destroy({
-      where: {
-        id,
+    const deletedStudentCount = await Student.update(
+      { deletedAt: new Date() },
+      {
+        where: {
+          id,
+        },
       },
-    });
+    );
     return deletedStudentCount;
   } catch (error) {
     throw new Error('Error al eliminar el estudiante');
