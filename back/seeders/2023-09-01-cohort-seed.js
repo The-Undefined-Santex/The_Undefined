@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         courseId: 3,
-        teacherId: 1, // Reemplaza con el ID válido de un profesor existente
+        teacherId: 2, // Reemplaza con el ID válido de un profesor existente
         startDate: '2023-09-01',
         finishDate: '2023-12-31',
         countStudents: 30,

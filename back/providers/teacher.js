@@ -71,7 +71,7 @@ const updateTeacher = async (id, teacher) => {
     if (teacher.ContactInformation) {
       await ContactInformation.update(teacher.ContactInformation, {
         where: {
-          id: teacher.id_contact_information,
+          id: teacher.contactInformationId,
         },
       });
     }
@@ -79,7 +79,7 @@ const updateTeacher = async (id, teacher) => {
     if (teacher.User) {
       await User.update(teacher.User, {
         where: {
-          id: teacher.id_user,
+          id: teacher.userId,
         },
       });
     }

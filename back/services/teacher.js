@@ -24,19 +24,19 @@ const createTeacher = async (teacher) => {
   try {
     // Se crea el usuario a partir del mail del docente
     // y la contraseña a partir del DNI
-    const hashedPassword = await bcrypt.hash(teacher.document_number.toString(), 10);
+    const hashedPassword = await bcrypt.hash(teacher.dni.toString(), 10);
     const newUser = await User.create({
       userName: teacher.ContactInformation.email,
       password: hashedPassword,
     });
     // Asigna el id del usuario al docente
-    teacher.id_user = newUser.id;
+    teacher.userId = newUser.id;
 
     // Se crea el contacto
     const newContactInformation = await ContactInformation.create(teacher.ContactInformation);
 
     // Asigna el id del contacto al docente
-    teacher.id_contact_information = newContactInformation.id;
+    teacher.contactInformationId = newContactInformation.id;
 
     // Se crea el docente
     const newTeacher = await teacherProvider.createTeacher(teacher);
