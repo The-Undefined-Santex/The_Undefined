@@ -25,7 +25,7 @@ const createStudent = async (student) => {
     // Crea el usuario con el mail del estudiante
     // y la contraseña es el documento de identidad del estudiante.
     // Esto es para que el usuario pueda iniciar sesión con el documento de identidad.
-    const hashedPassword = await bcrypt.hash(student.dni.toString(), 10);
+    const hashedPassword = await bcrypt.hash(student.document_number.toString(), 10);
     const newUser = await User.create({
       userName: student.ContactInformation.email,
       password: hashedPassword,
