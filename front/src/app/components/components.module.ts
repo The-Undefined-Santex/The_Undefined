@@ -28,12 +28,19 @@ import { MenuModule } from 'primeng/menu';
 import { PanelModule } from 'primeng/panel';
 import { ToolbarModule } from 'primeng/toolbar';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialog, ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TableModule } from 'primeng/table';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 import { AllCoursesRoutingModule } from './all-courses-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-inscr-courses.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ResultPipe } from './pipes/result.pipe';
+import { TeachersComponent } from './teachers/teachers.component';
+import { EditTeacherComponent } from './teachers/edit-teacher.component';
+import { NewTeachersComponent } from './teachers/new-teachers.component';
 
 
 
@@ -56,7 +63,7 @@ import { ResultPipe } from './pipes/result.pipe';
                   PayTransfCourseComponent, 
                   AllCoursesComponent, 
                   FormInscrCoursesComponent, 
-                  FilterPipe, ResultPipe, 
+                  FilterPipe, ResultPipe, TeachersComponent, EditTeacherComponent, NewTeachersComponent, 
                 ],
   imports: [
     CommonModule,
@@ -72,7 +79,10 @@ import { ResultPipe } from './pipes/result.pipe';
     AllCoursesRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    InputTextModule
+    InputTextModule,
+    ToastModule,
+    ConfirmDialogModule,
+    TableModule,
     
   ],
   exports: [
@@ -80,8 +90,14 @@ import { ResultPipe } from './pipes/result.pipe';
     LandingCoursesComponent,
     HeaderComponent,
     FooterComponent,
-    BannerComponent
+    BannerComponent,
   ],
-  providers: [],
+  providers: [
+    MessageService,
+    ConfirmationService,
+    ConfirmDialogModule,
+    ConfirmDialog,
+    ToastModule
+  ],
 })
 export class ComponentsModule {}
