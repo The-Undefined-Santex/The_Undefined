@@ -19,6 +19,8 @@ const getAllTeachers = async () => {
     );
     return teachers;
   } catch (error) {
+    console.log(error);
+    // throw new Error('Error al obtener los docentes');
     throw new Error('Error al obtener los docentes');
   }
 };
@@ -60,8 +62,36 @@ const updateTeacher = async (id, teacher) => {
         id,
       },
     });
+
+    // Luego, si es necesario actualizamos la información de contacto
+    if (teacher.ContactInformation) {
+      await ContactInformation.update(teacher.ContactInformation, {
+        where: {
+          id: teacher.contactInformationId,
+        },
+      });
+    }
+    // Y el usuario
+    if (teacher.User) {
+      await User.update(teacher.User, {
+        where: {
+          id: teacher.userId,
+        },
+      });
+    }
+    if (teacher.Cohorts) {
+      // Si deseamos modificar multiples cohorts, podemos hacerlo de esta manera:
+      // Removemos la asociación de los cohorts existentes con el estudiante
+      // Generamos una nueva
+      const teacherInstance = await Teacher.findByPk(id);
+
+      // Reemplazamos con los cohort nuevos
+      await teacherInstance.setCohorts(teacher.Cohorts.map((cohort) => cohort.id));
+    }
+
     return updatedTeacherCount;
   } catch (error) {
+    console.log(error);
     throw new Error('Error al actualizar profesor');
   }
 };

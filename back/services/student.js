@@ -1,4 +1,6 @@
+const bcrypt = require('bcrypt');
 const { StudentProvider } = require('../providers');
+const { User, ContactInformation } = require('../models');
 
 const getAllStudents = async () => {
   try {
@@ -20,9 +22,28 @@ const getStudentById = async (id) => {
 
 const createStudent = async (student) => {
   try {
+    // Crea el usuario con el mail del estudiante
+    // y la contraseña es el documento de identidad del estudiante.
+    // Esto es para que el usuario pueda iniciar sesión con el documento de identidad.
+    const hashedPassword = await bcrypt.hash(student.dni.toString(), 10);
+    const newUser = await User.create({
+      userName: student.ContactInformation.email,
+      password: hashedPassword,
+    });
+
+    // Asigna el id del usuario al estudiante
+    student.userId = newUser.id;
+
+    const newContactInformation = await ContactInformation.create(student.ContactInformation);
+
+    // Asigna el id del contacto al estudiante
+    student.contactInformationId = newContactInformation.id;
+
+    // Llama al proveedor para crear el estudiante
     const newStudent = await StudentProvider.createStudent(student);
     return newStudent;
   } catch (error) {
+    console.error('Error al crear el estudiante:', error);
     throw new Error('Error al crear el estudiante');
   }
 };
