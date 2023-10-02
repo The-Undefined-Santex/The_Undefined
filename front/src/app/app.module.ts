@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -11,14 +14,13 @@ import { MockUnsuccessfullyComponent } from './components/courses/courses-mock/m
 import { MockSuccessComponent } from './components/courses/courses-mock/mock-success.component';
 import { Error404Component } from './components/error404/error404.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
     MockUnsuccessfullyComponent,
     MockSuccessComponent,    
-    Error404Component
+    Error404Component,
+    
 
   
   ],
@@ -28,8 +30,12 @@ import { Error404Component } from './components/error404/error404.component';
     BrowserAnimationsModule,
     ComponentsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
