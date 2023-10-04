@@ -36,6 +36,18 @@ const routes: Routes = [
     loadChildren: () => import('./components/courses-mockUnseccesfully-routing.module').then(m => m.CoursesMockUnseccesfullyModule)
   },
   {
+    path: 'crud-students',
+    loadChildren: () => import('../app/components/crud-students-routing.module').then(m => m.CrudStudentsRouting)
+  },
+  {
+    path: 'create-student',
+    loadChildren: () => import('../app/components/create-student-routing.module').then(m => m.CreateStudentRouting)
+  },
+  {
+    path: 'edit-students/:id',
+    loadChildren: () => import('../app/components/edit-student-routing.module').then(m => m.EditStudentRouting)
+  },
+  {
     path: 'profil/:id',
     component: Error404Component,
   },
