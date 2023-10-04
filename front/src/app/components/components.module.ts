@@ -34,6 +34,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-inscr-courses.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ResultPipe } from './pipes/result.pipe';
+import { CrudStudentsComponent } from './crud/crud-students/crud-students.component';
+import { UpdateStudentsComponent } from './crud/update-students/update-students.component';
+import { CreateStudentComponent } from './crud/create-student/create-student.component';
 
 
 
@@ -56,7 +59,7 @@ import { ResultPipe } from './pipes/result.pipe';
                   PayTransfCourseComponent, 
                   AllCoursesComponent, 
                   FormInscrCoursesComponent, 
-                  FilterPipe, ResultPipe, 
+                  FilterPipe, ResultPipe, CrudStudentsComponent, UpdateStudentsComponent, CreateStudentComponent, 
                 ],
   imports: [
     CommonModule,
