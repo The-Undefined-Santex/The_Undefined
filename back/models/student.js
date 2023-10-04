@@ -36,11 +36,11 @@ module.exports = (sequelize, DataTypes) => {
     document_number: DataTypes.INTEGER,
     contactInformationId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     birth_date: DataTypes.DATE,
     situation: DataTypes.STRING,
