@@ -31,11 +31,11 @@ module.exports = (sequelize, DataTypes) => {
     birth_date: DataTypes.DATE,
     contactInformationId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
   }, {
     sequelize,
