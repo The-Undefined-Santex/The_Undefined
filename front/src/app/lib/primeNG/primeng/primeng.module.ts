@@ -11,6 +11,10 @@ import { TreeSelectModule } from 'primeng/treeselect';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {InputNumberModule} from 'primeng/inputnumber';
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   declarations: [],
   imports: [
@@ -26,7 +30,12 @@ import { DialogModule } from 'primeng/dialog';
     InputMaskModule,
     TreeSelectModule,
     CheckboxModule,
-    RadioButtonModule,DialogModule
+    RadioButtonModule,
+    DialogModule,
+    ToastModule,
+    ConfirmDialogModule,
+    InputNumberModule,
+    CalendarModule
   ]
 })
 export class PrimengModule { }
