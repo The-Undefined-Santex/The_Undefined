@@ -1,4 +1,5 @@
 const { Teacher } = require('../models');
+const { ContactInformation } = require('../models');
 
 const getAllTeachers = async () => {
   try {
@@ -11,7 +12,19 @@ const getAllTeachers = async () => {
 
 const getTeachersById = async (id) => {
   try {
-    const teacher = await Teacher.findByPk(id);
+    const teacher = await Teacher.findByPk(id, {
+      attributes: ['id', 'dni', 'firstName', 'lastName', 'birth_date'],
+      include: [
+        {
+          model: ContactInformation,
+          attributes: ['phone_number',
+            'country',
+            'state',
+            'address',
+            'email'],
+        },
+      ],
+    });
     return teacher;
   } catch (error) {
     throw new Error('Error al obtener el docente');
