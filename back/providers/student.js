@@ -5,11 +5,11 @@ const { User } = require('../models');
 const getAllStudents = async () => {
   try {
     const students = await Student.findAll({
-      attributes: ['id', 'first_name', 'last_name', 'document_number', 'birth_date', 'situation'],
+      attributes: ['id', 'first_name', 'last_name', 'document_number', 'birth_date', 'situation', 'contactInformationId'],
       include: [
         {
           model: ContactInformation,
-          attributes: ['phone_number',
+          attributes: ['id', 'phone_number',
             'country',
             'state',
             'address',
@@ -27,11 +27,11 @@ const getAllStudents = async () => {
 const getStudentById = async (id) => {
   try {
     const student = await Student.findByPk(id, {
-      attributes: ['id', 'first_name', 'last_name', 'document_number', 'birth_date', 'situation'],
+      attributes: ['id', 'first_name', 'last_name', 'document_number', 'birth_date', 'situation', 'contactInformationId'],
       include: [
         {
           model: ContactInformation,
-          attributes: ['phone_number',
+          attributes: ['id', 'phone_number',
             'country',
             'state',
             'address',

@@ -1,14 +1,14 @@
-const { Teacher, ContactInformation } = require('../models');
+const { Teacher, ContactInformation, User } = require('../models');
 
 const getAllTeachers = async () => {
   try {
     const teachers = await Teacher.findAll(
       {
-        attributes: ['id', 'dni', 'firstName', 'lastName', 'birth_date'],
+        attributes: ['id', 'dni', 'firstName', 'lastName', 'birth_date', 'contactInformationId'],
         include: [
           {
             model: ContactInformation,
-            attributes: ['phone_number',
+            attributes: ['id', 'phone_number',
               'country',
               'state',
               'address',
@@ -28,11 +28,11 @@ const getAllTeachers = async () => {
 const getTeachersById = async (id) => {
   try {
     const teacher = await Teacher.findByPk(id, {
-      attributes: ['id', 'dni', 'firstName', 'lastName', 'birth_date'],
+      attributes: ['id', 'dni', 'firstName', 'lastName', 'birth_date', 'contactInformationId'],
       include: [
         {
           model: ContactInformation,
-          attributes: ['phone_number',
+          attributes: ['id', 'phone_number',
             'country',
             'state',
             'address',
