@@ -1,0 +1,5 @@
+const CATEGORIA_0 = 'ADMI';
+const CATEGORIA_1 = 'TEACHER';
+const CATEGORIA_2 = 'STUDENT';
+
+module.exports = { CATEGORIA_0, CATEGORIA_1, CATEGORIA_2 };

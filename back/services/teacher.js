@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const { teacherProvider } = require('../providers');
 const { User, ContactInformation } = require('../models');
+const { userTypeMiddleware } = require('../middleware');
 
 const getAllTeachers = async () => {
   try {
@@ -28,6 +29,7 @@ const createTeacher = async (teacher) => {
     const newUser = await User.create({
       userName: teacher.ContactInformation.email,
       password: hashedPassword,
+      rol: userTypeMiddleware.CATEGORIA_1,
     });
     // Asigna el id del usuario al docente
     teacher.userId = newUser.id;

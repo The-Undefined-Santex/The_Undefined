@@ -5,7 +5,7 @@ const createUser = async (user) => {
     const createdUser = await User.create(user);
     return createdUser;
   } catch (error) {
-    throw new Error('Error when creating user');
+    throw new Error('Error when creating user, Email exist');
   }
 };
 
