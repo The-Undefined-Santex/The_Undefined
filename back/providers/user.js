@@ -1,11 +1,12 @@
 const { User } = require('../models');
+const { passwordMiddleware } = require('../middleware');
 
 const createUser = async (user) => {
   try {
     const createdUser = await User.create(user);
     return createdUser;
   } catch (error) {
-    throw new Error('Error when creating user');
+    throw new Error('Error when creating user, Email exist');
   }
 };
 
@@ -52,6 +53,34 @@ const updateUser = async (id, user) => {
   }
 };
 
+const validerUser = async (user, pass) => {
+  try {
+    const userFound = await User.findOne({
+      atributes: ['userName', 'password'],
+      where: {
+        userName: user,
+      },
+    });
+
+    const hashPassword = await passwordMiddleware.comparePassword(
+      pass.toString(),
+      userFound.password,
+    );
+    if (userFound != null && hashPassword) {
+      return userFound;
+    }
+    return false;
+  } catch (err) {
+    console.error('Error when validating User', err);
+    return false;
+  }
+};
+
 module.exports = {
-  createUser, getUserById, getAllUsers, deleteUser, updateUser,
+  createUser,
+  getUserById,
+  getAllUsers,
+  deleteUser,
+  updateUser,
+  validerUser,
 };
