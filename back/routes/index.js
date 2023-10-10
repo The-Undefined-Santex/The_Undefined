@@ -14,6 +14,7 @@ const teacherRoutes = require('./teacher');
 const studentRoutes = require('./student');
 const cohortRoutes = require('./cohort');
 const adminRoutes = require('./admin');
+const authRoutes = require('./auth');
 
 // use=
 app.use('/coursesDetail', coursesDetailRoutes);
@@ -22,6 +23,7 @@ app.use('/teachers', teacherRoutes);
 app.use('/user', userRoutes);
 app.use('/student', studentRoutes);
 app.use('/cohort', cohortRoutes);
+app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
 app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);

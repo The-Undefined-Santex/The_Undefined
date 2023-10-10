@@ -1,7 +1,6 @@
-const bcrypt = require('bcrypt');
 const { StudentProvider } = require('../providers');
 const { User, ContactInformation } = require('../models');
-const { userTypeMiddleware } = require('../middleware');
+const { userTypeMiddleware, passwordMiddleware } = require('../middleware');
 
 const getAllStudents = async () => {
   try {
@@ -26,10 +25,11 @@ const createStudent = async (student) => {
     // Crea el usuario con el mail del estudiante
     // y la contraseña es el documento de identidad del estudiante.
     // Esto es para que el usuario pueda iniciar sesión con el documento de identidad.
-    const hashedPassword = await bcrypt.hash(student.document_number.toString(), 10);
+
+    const pass = await passwordMiddleware.hashPassword((student.document_number).toString());
     const newUser = await User.create({
       userName: student.ContactInformation.email,
-      password: hashedPassword,
+      password: pass,
       rol: userTypeMiddleware.CATEGORIA_2,
     });
 

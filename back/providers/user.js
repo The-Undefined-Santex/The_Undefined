@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const { passwordMiddleware } = require('../middleware');
 
 const createUser = async (user) => {
   try {
@@ -52,6 +53,34 @@ const updateUser = async (id, user) => {
   }
 };
 
+const validerUser = async (user, pass) => {
+  try {
+    const userFound = await User.findOne({
+      atributes: ['userName', 'password'],
+      where: {
+        userName: user,
+      },
+    });
+
+    const hashPassword = await passwordMiddleware.comparePassword(
+      pass.toString(),
+      userFound.password,
+    );
+    if (userFound != null && hashPassword) {
+      return userFound;
+    }
+    return false;
+  } catch (err) {
+    console.error('Error when validating User', err);
+    return false;
+  }
+};
+
 module.exports = {
-  createUser, getUserById, getAllUsers, deleteUser, updateUser,
+  createUser,
+  getUserById,
+  getAllUsers,
+  deleteUser,
+  updateUser,
+  validerUser,
 };
