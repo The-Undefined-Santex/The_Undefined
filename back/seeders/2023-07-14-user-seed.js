@@ -1,5 +1,5 @@
 'use strict';
-
+const { hashPassword } = require('../middleware/password')
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     await queryInterface.bulkInsert('Users', [
       {
         userName: 'alumno1@gmail.com',
-        password: passwordHash,
+        password: await hashPassword('123456789'),
         rol: "STUDENT",
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -17,83 +17,41 @@ module.exports = {
       {
         userName: 'alumno2@gmail.com',
         rol: "STUDENT",
-        password: passwordHash,
+        password: await hashPassword('987654321'),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userName: 'alumno3@gmail.com',
-        password: passwordHash,
-        rol: "STUDENT",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        userName: 'alumno4@gmail.com',
-        password: passwordHash,
-        rol: "STUDENT",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        userName: 'alumno5@gmail.com',
-        password: passwordHash,
-        rol: "STUDENT",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        userName: 'alumno6@gmail.com',
-        password: passwordHash,
-        rol: "STUDENT",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        userName: 'alumno7@gmail.com',
-        password: passwordHash,
-        rol: "STUDENT",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        userName: 'alumno8@gmail.com',
-        password: passwordHash,
-        rol: "STUDENT",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        userName: 'alumno9@gmail.com',
-        password: passwordHash,
+        password: await hashPassword('456789123'),
         rol: "STUDENT",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userName: 'admin@gmail.com',
-        password: passwordHash,
+        password: await hashPassword('66666666'),
         rol: "ADMI",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userName: 'teacher1@gmail.com',
-        password: passwordHash,
+        password: await hashPassword('123456789'),
         rol: "TEACHER",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userName: 'teacher2@gmail.com',
-        password: passwordHash,
+        password: await hashPassword('987654321'),
         rol: "TEACHER",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userName: 'teacher3@gmail.com',
-        password: passwordHash,
+        password: await hashPassword('456789123'),
         rol: "TEACHER",
         createdAt: new Date(),
         updatedAt: new Date(),
