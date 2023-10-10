@@ -3,11 +3,12 @@ const { validerUser } = require('./user');
 const logingUser = async (datos) => {
   const { user, pass } = datos;
 
-  const userFound = await validerUser(user, pass);
-  if (userFound) {
-    return 'Valid User.';
+  const token = await validerUser(user, pass);
+  if (token) {
+    // return 'Valid User.';
+    return token;
   }
-  return 'Invalid User wt.';
+  return 'Invalid User.';
 };
 
 module.exports = { logingUser };

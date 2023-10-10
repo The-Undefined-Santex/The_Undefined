@@ -1,5 +1,6 @@
 const { User } = require('../models');
 const { passwordMiddleware } = require('../middleware');
+const { generateToken } = require('../helpers/tokengenerator');
 
 const createUser = async (user) => {
   try {
@@ -56,7 +57,7 @@ const updateUser = async (id, user) => {
 const validerUser = async (user, pass) => {
   try {
     const userFound = await User.findOne({
-      atributes: ['userName', 'password'],
+      atributes: ['userName', 'password', 'rol'],
       where: {
         userName: user,
       },
@@ -67,7 +68,12 @@ const validerUser = async (user, pass) => {
       userFound.password,
     );
     if (userFound != null && hashPassword) {
-      return userFound;
+      // return userFound;
+      const token = await generateToken({
+        username: userFound.userName,
+        rol: userFound.rol,
+      });
+      return ({ token });
     }
     return false;
   } catch (err) {
