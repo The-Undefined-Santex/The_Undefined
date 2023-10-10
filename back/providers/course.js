@@ -63,6 +63,7 @@ const getCourseById = async (id) => {
         'description',
         'duration',
         'start_date',
+        'capacity',
         'price',
         'due',
         'has_surcharge',
