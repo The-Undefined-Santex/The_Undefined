@@ -1,4 +1,6 @@
+const bcrypt = require('bcrypt');
 const { teacherProvider } = require('../providers');
+const { User, ContactInformation } = require('../models');
 
 const getAllTeachers = async () => {
   try {
@@ -20,9 +22,27 @@ const getTeachersById = async (id) => {
 
 const createTeacher = async (teacher) => {
   try {
+    // Se crea el usuario a partir del mail del docente
+    // y la contraseña a partir del DNI
+    const hashedPassword = await bcrypt.hash(teacher.dni.toString(), 10);
+    const newUser = await User.create({
+      userName: teacher.ContactInformation.email,
+      password: hashedPassword,
+    });
+    // Asigna el id del usuario al docente
+    teacher.userId = newUser.id;
+
+    // Se crea el contacto
+    const newContactInformation = await ContactInformation.create(teacher.ContactInformation);
+
+    // Asigna el id del contacto al docente
+    teacher.contactInformationId = newContactInformation.id;
+
+    // Se crea el docente
     const newTeacher = await teacherProvider.createTeacher(teacher);
     return newTeacher;
   } catch (error) {
+    console.log(error);
     throw new Error('Error en el servicio al crear el docente');
   }
 };

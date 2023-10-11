@@ -1,12 +1,13 @@
 
 <div class="py-8">
     <p-toast position="top-center" ></p-toast>
-    <h1>Registro de Estudiante</h1>
+   
+    <h1 class="text-center">Registrar Nuevo Profesor</h1>
     <form class="flex flex-column align-items-center py-5" >
 
         <div class="flex flex-row gap-8 my-5">
 
-            <div>
+            <div class="">
                 <div class="field ">
                     <label for="firstName">Nombre</label>
                     <input class="px-8" type="text" pInputText id="firstName" name="firstName"
@@ -27,16 +28,51 @@
                     [(ngModel)]="teacher.dni" >
              
                 
-                </div>
-    
+                </div>    
+            </div>
+
+            <div>
                 <div class="field ">
                     <label for="birth_date">Fecha </label>
                     <input class="px-8" type="date" pInputText id="birth_date" name="birth_date"
                     [(ngModel)]="teacher.birth_date" >
         
                 </div>
-    
+                <div class="field">
+                    <label for="phone_number">Telefono</label>
+                    <input class="px-8" type="number" pInputText id="phone_number"
+                    name="phone_number" [(ngModel)]="teacher.ContactInformation.phone_number"  >
+                </div>
+
+                <div class="field">
+                    <label for="country">Pais</label>
+                    <input class="px-8" type="text" pInputText id="country"
+                    name="country" [(ngModel)]="teacher.ContactInformation.country" >
+                </div>
+
             </div>
+            <div>
+
+                <div class="field">
+                    <label for="state">Estado</label>
+                    <input class="px-8" type="text" pInputText id="state"
+                    name="state" [(ngModel)]="teacher.ContactInformation.state">
+                </div>
+
+                <div class="field">
+                    <label for="address">Direccion</label>
+                    <input class="px-8" type="text" pInputText id="address" 
+                    name="address" [(ngModel)]="teacher.ContactInformation.address">
+                </div>
+
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input class="px-8" type="email" pInputText id="email"
+                    name="email" [(ngModel)]="teacher.ContactInformation.email">
+                </div>
+
+            </div>
+
           
         </div>
         <div class="flex gap-8">
