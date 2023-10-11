@@ -19,7 +19,7 @@ export class NewTeachersComponent implements OnInit{
              private router: Router) { }
 
  ngOnInit(): void {
-  
+
  }
 
 
