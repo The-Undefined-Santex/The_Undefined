@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Teacher, Student, Admin, sequelize } = require('../models');
 const { passwordMiddleware } = require('../middleware');
 const { generateToken } = require('../helpers/tokengenerator');
 
@@ -68,12 +68,19 @@ const validerUser = async (user, pass) => {
       userFound.password,
     );
     if (userFound != null && hashPassword) {
-      // return userFound;
+      const userData = await sequelize.model(userFound.rol).findOne(
+        { where: { userId: userFound.id }})
+
       const token = await generateToken({
+        id: userFound.id,
         username: userFound.userName,
         rol: userFound.rol,
       });
-      return ({ token });
+      return ({ data: {
+        id: userData.id,
+        userName: userFound.userName,
+        rol: userFound.rol
+      }, token });
     }
     return false;
   } catch (err) {
