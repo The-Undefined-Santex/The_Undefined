@@ -1,0 +1,174 @@
+<section class="flex justify-content-center flex-column align-items-center">
+
+    <p-toast position="top-right" styleClass="opacity-100"></p-toast>
+    <h1 class="text-center mb-4">Editar el Curso</h1>
+
+    <form class="flex flex-column justify-content-center gap-4">
+        <ng-container *ngFor="let courseItem of course; let i = index">
+                <div>
+
+                    <label for="title" class="font-bold">Titulo</label>
+                    <input type="text" pInputText id="title" name="title"
+                    [(ngModel)]="courseItem.title" 
+                    (input)="changesMade = true">
+
+                </div>
+    
+                <div>
+
+                    <label for="subtitle" class="font-bold">Subtitulo</label>
+                    <textarea name="subtitle" id="subtitle" cols="30" rows="10" type="text" pInputText
+                    (input)="changesMade = true"
+                    [(ngModel)]="courseItem.subtitle"></textarea>
+
+                </div>
+
+                <div>
+
+                    <label for="description" class="font-bold">Descripcion</label>
+                    <textarea id="description" name="description" cols="30" rows="10" type="text" pInputText 
+                    (input)="changesMade = true"
+                    [(ngModel)]="courseItem.description"></textarea>
+
+                </div>
+
+                <div>
+
+                    <label for="duration" class="font-bold">Duracion</label>
+                    <input type="text" pInputText id="duration" name="duration"
+                    [(ngModel)]="courseItem.duration" 
+                    (input)="changesMade = true">
+
+                </div>
+
+                <div>
+                    <label for="start_date" class="font-bold">Fecha de inicio</label>
+                    <input type="text" pInputText id="start_date" name="start_date"
+                           [(ngModel)]="courseItem.start_date"
+                           (input)="changesMade = true">
+                  </div>
+
+
+                <div>
+
+                    <label for="capacity" class="font-bold">Capacidad</label>
+                    <input type="text" pInputText id="capacity" name="capacity"
+                    (input)="changesMade = true"
+                    [(ngModel)]="courseItem.capacity">
+
+                </div>
+
+                <div>
+
+                    <label for="price" class="font-bold">Precio</label>
+                    <input type="text" pInputText id="price" name="price"
+                    (input)="changesMade = true"
+                    [(ngModel)]="courseItem.price">
+
+                </div>
+
+                <div>
+
+                    <label for="due" class="font-bold">Cuota</label>
+                    <input type="text" pInputText id="due" name="due"
+                    (input)="changesMade = true"
+                    [(ngModel)]="courseItem.due">
+
+                </div>
+                <div>
+
+                    <label for="has_surcharge" class="font-bold">Si o no?</label>
+                    <input type="text" pInputText id="has_surcharge" name="has_surcharge"
+                    (input)="changesMade = true"
+                    [(ngModel)]="courseItem.has_surcharge">
+
+                </div>
+                <div>
+
+                    <label for="surcharge_percentage" class="font-bold">% Iva</label>
+                    <input type="text" pInputText id="surcharge_percentage" name="surcharge_percentage"
+                    (input)="changesMade = true"
+                    [(ngModel)]="courseItem.surcharge_percentage">
+
+                </div>
+                <div>
+
+                    <label for="modality" class="font-bold">Modalidad</label>
+                    <input type="text" pInputText id="modality" name="modality"
+                    (input)="changesMade = true"
+                    [(ngModel)]="courseItem.modality">
+
+                </div>
+                <div>
+
+                    <label for="schedules" class="font-bold">Horario</label>
+                    <input type="text" pInputText id="schedules" name="schedules"
+                    (input)="changesMade = true"
+                    [(ngModel)]="courseItem.schedules">
+
+                </div>
+                <div>
+
+                    <label for="banner" class="font-bold">Img Banner</label>
+                    <input type="text" pInputText id="banner" name="banner"
+                    (input)="changesMade = true"
+                    [(ngModel)]="courseItem.banner">
+
+                </div>
+                <div>
+                    <h2 class="font-bold">Detalles del Curso</h2>
+                    <ng-container *ngFor="let detail of courseItem.courseDetails; let i = index">
+                        <div>
+                
+                            <label for="titleDetail" class="font-bold">Título del Detalle {{i + 1}}</label>
+                            <input type="text" pInputText id="titleDetail" name="titleDetail"
+                                [(ngModel)]="detail.title" (input)="changesMade = true">
+                
+                        </div>
+                
+                        <div>
+                
+                            <label for="paragraph1" class="font-bold">Párrafo 1</label>
+                            <textarea name="paragraph1" id="paragraph1" cols="30" rows="10" type="text" pInputText
+                                (input)="changesMade = true" [(ngModel)]="detail.paragraph1"></textarea>
+                
+                        </div>
+                
+                        <div>
+                
+                            <label for="paragraph2" class="font-bold">Párrafo 2</label>
+                            <textarea name="paragraph2" id="paragraph2" cols="30" rows="10" type="text" pInputText
+                                (input)="changesMade = true" [(ngModel)]="detail.paragraph2"></textarea>
+                
+                        </div>
+                
+                        <div>
+                
+                            <label for="image1url" class="font-bold">URL de la Imagen 1</label>
+                            <input type="text" pInputText id="image1url" name="image1url"
+                                [(ngModel)]="detail.image1url" (input)="changesMade = true">
+                
+                        </div>
+                
+                        <div>
+                
+                            <label for="image2url" class="font-bold">URL de la Imagen 2</label>
+                            <input type="text" pInputText id="image2url" name="image2url"
+                                [(ngModel)]="detail.image2url" (input)="changesMade = true">
+                
+                        </div>
+                    </ng-container>
+                </div>
+ 
+
+        <div class="flex justify-content-center align-items-center gap-8">
+
+            <p-button  label="Volver al crud" 
+            styleClass="p-button-raised my-5" [routerLink]="['/crudCourses']"></p-button>
+            <p-button label="Actualizar" 
+            styleClass="p-button-raised my-5" (onClick)="uploadChanges()"></p-button>
+
+        </div>
+        </ng-container>
+    </form>
+</section>
