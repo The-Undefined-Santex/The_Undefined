@@ -1,20 +1,45 @@
-.containerDetail{
-    .containerDetailCourse{
-        .containerCourse{                   
-            .containerCost{
-                border: 2px solid blue;
+.detailCourses{
+    background-color: #a1b9e3;
+    .containerDetail{
+        background-color: white;
+        .containerDetailCourse{
+            
+            .imgBanner{
+                border: 1px solid rgb(63, 63, 63);
+            }
+            .containerCourse{ 
+                .title{
+                    color: #08087a;
+                    text-shadow: 1px 1px 1px #e68244;
+                }                 
+                .containerCost{
+                    
+                    border: 2px solid blue;
+                    .containerPrice{
+                        color: #1E40A5;
+                    }
+                }
             }
         }
-    }
-
-    .containerDetailDownload{
-        .iconsDownload{
-              margin-left: 10rem;  
+    
+        .containerDetailDownload{
+            .iconsDownload{
+                  margin-left: 10rem;  
+            }
         }
-    }
-    .containerDetailDivider{
-        .divCard{
-            border: 1px solid rgb(234, 234, 234);
+        .detailText{
+            color: #1E40A5;
+        }
+        .containerDetailDivider{
+           
+            .divCard{
+                color: white;
+                background-color: #314da2;
+                border: 1px solid rgb(234, 234, 234);
+                i{
+                    color: #F26B16;
+                }
+            }
         }
     }
 }
@@ -23,7 +48,7 @@
     .containerDetail{
         .containerDetailText{
             .detailText{
-                max-width: 65ch;
+                //max-width: 65ch;
             }
             .imgLogo {
                 border: 1px solid rgb(243, 240, 240);

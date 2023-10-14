@@ -1,8 +1,8 @@
 <!-- Menu ppal-->
   <nav class="menuppal">
-    <div 
-      class="border-circle border-yellow-500 w-6rem h-6rem m-2 surface-300 font-bold flex align-items-center justify-content-center">
-      logo
+    <div class="borderImg border-circle w-6rem h-6rem m-2  font-bold flex 
+      align-items-center justify-content-center">
+      <img class="w-12" src="../../../assets/img/logoIncubadora.png" alt="logo">
     </div>
     <div>
       <p *ngIf="nombreUsuario">{{nombreUsuario ? 'Bienvenido ' + nombreUsuario : ""}}</p>
@@ -10,22 +10,23 @@
     <ul class="nav list">
       <li><a routerLink="/">Home</a></li>
       <li><a href="#cursos">Cursos</a></li>
-      <li><a href="#">Alianzas</a></li>
+      <li><a href="#alianzas">Alianzas</a></li>
       <ul class="dropdown" type="none">
         <li><a href="index.html">Experiencias destacadas</a>
-          <ul class="cursos" type="none">
+          <ul class="cursos desplegable" type="none">
             <li><a href="#testimonios">Testimonios</a></li>
-            <li><a href="">Publicaciones</a></li>
+            <li><a href="#">Publicaciones</a></li>
           </ul>
         </li>
       </ul>
-      <li><a href="#">Contacto</a></li>
+      <li><a href="#contacto">Contacto</a></li>
       <li *ngIf="userlogued"  (click)="showDialog()">Login</li>
       <li *ngIf="usuarioAutenticado"  (click)="Logout()">Logout</li>
     </ul>
   </nav> 
-  <p-dialog header="Login" class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-          <form [formGroup]="form">
+  <p-dialog  header="Login" class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true"
+   [style]="{ width: '50vw', border: '4px solid #FF6600' }" [draggable]="false" [resizable]="false">
+          <form  [formGroup]="form">
               <div class="mb-3">
                   <label for="userName" class="form-label">UserName</label>
                   <input type="text" class="form-control" id="userName" formControlName="userName">
@@ -55,7 +56,7 @@
     </label>
     <ul class="ul-mbl">
       <div>
-        <p *ngIf="nombreUsuario">{{nombreUsuario ? 'Bienvenido ' + nombreUsuario : ""}}</p>
+        <p class="usuarioLogueado" *ngIf="nombreUsuario">{{nombreUsuario ? 'Bienvenido ' + nombreUsuario : ""}}</p>
       </div>
       <li><a routerLink="/">Home</a></li>
       <li><a href="#cursos">Cursos</a></li>

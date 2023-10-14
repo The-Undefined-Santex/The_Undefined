@@ -1,9 +1,9 @@
 
-<div class="flex flex-column align-items-center pt-8 pb-8" >
+<div class="containerForm flex flex-column align-items-center pt-8 pb-8" >
 
-    <h1 class="text-center pb-5">Formulario de Inscripcion Al Curso</h1>
+    <h1 class=" text-center pb-5">Formulario de Inscripcion Al Curso</h1>
     
-    <form class="pt-5" [formGroup]="recordForm" (ngSubmit)="onSubmit()"  >
+    <form class="form px-8 py-5" [formGroup]="recordForm" (ngSubmit)="onSubmit()"  >
 
         <div class="pb-4 flex flex-column lg:flex-row lg:gap-5" >
             <div class="field pb-4">
@@ -95,7 +95,7 @@
         <div class="lg:flex justify-content-center lg:gap-5 pb-3 ">
             <div class="flex flex-column justify-content-around w-6">
                 <p class="font-bold text-2xl">Curso elegido: </p>
-                <p class="font-bold text-bluegray-600 text-center text-4xl">{{courseService.courses.title}}</p>
+                <p class="course font-bold text-center text-4xl">{{courseService.courses.title}}</p>
             </div>
             <div class="card flex flex-column justify-content-center gap-2">
                 <label for="birthdate" class="block font-bold">Horario<span class="text-red-600 ml-2">*</span></label>
@@ -116,9 +116,9 @@
         </div>
         
         <div class="card flex flex-column gap-4 lg:flex-row lg:justify-content-around pt-7">
-            <a (click)="clearInput()" pButton label="Cancelar" type="button" class="font-bold text-xl w-12 lg:w-3"></a>
-            <button type="submit" class="font-bold text-xl w-12 lg:w-3
-             bg-primary border-round py-3" >Siguiente </button>
+            <a (click)="clearInput()" pButton label="Cancelar" type="button" class="btnForm font-bold text-xl w-12 lg:w-3"></a>
+            <button type="submit" class="btnForm font-bold text-xl w-12 lg:w-3
+            text-0 border-round py-3" >Siguiente </button>
            
         </div>
 

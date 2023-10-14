@@ -1,5 +1,5 @@
 <div>
-    <h1 class="text-center">Nuestros Cursos</h1>
+    <h1 class="titleCourses text-center">Nuestros Cursos</h1>
 </div>
 <p class="parrafo__courses text-center">
     Potencia tu aprendizaje con nuestros cursos dinámicos y adquiere habilidades claves para
@@ -12,9 +12,9 @@
         [(ngModel)]="filterPost" />
 </div>
 
-<div class="card-container flex justify-content-center result-label" *ngIf="( filterPost == '')">
+<div style="background: #748BB3;" class=" card-container flex justify-content-center result-label" *ngIf="( filterPost == '')">
     <h4>
-        <p>Total de cursos : {{ (coursesService.courses | filter: filterPost).length }} </p>
+        <p >Total de cursos : {{ (coursesService.courses | filter: filterPost).length }} </p>
     </h4>
 </div>
 <div class="card-container flex justify-content-center result-label"
@@ -43,10 +43,11 @@
 <div class="flex justify-content-center flex-wrap">
     <div class="card-container flex justify-content-center flex-wrap"
         *ngFor="let course of coursesService.courses | filter:filterPost ">
-        <p-card [style]="{ width: '360px', height: '25em'}" styleClass="shadow-2"
+        <p-card [style]="{ width: '360px', height: '25em', 
+        background:'#070760', color : 'white'}" styleClass=" shadow-2"
             class=" font-bold text-white border-round m-2">
             <div class="card" style="height: 100%;">
-                <h2 [style]="{height: '3em'}">
+                <h2 [style]="{height: '3em', textAlign: 'center'}">
                     {{ course.title }}
                 </h2>
                 <p [style]="{height: '2em'}">
@@ -64,16 +65,15 @@
                     fecha de inicio: {{ course.start_date }}
                 </p>
                 <p-divider></p-divider>
-                <div class="flex justify-content-start flex-wrap button">
-                    <p-button label="Ver detalle" [routerLink]="['/courses', course.id]"
-                        class="flex align-items-center justify-content-center w-10rem h-2rem"
-                        styleClass="p-button-raised p-button-text p-button-secondary">
-                    </p-button>
-                    <p-button label="Inscribite" [routerLink]="['/form-inscr-courses', course.id]" icon="pi pi-times"
-                        class="flex align-items-center justify-content-center w-10rem h-2rem"
-                        styleClass="p-button-raised p-button-text p-button-secondary"
-                        [style]="{ 'margin-left': '.5em' }">
-                    </p-button>
+                <div class="flex justify-content-start flex-wrap button gap-4">
+                    <button label="Ver detalle" [routerLink]="['/courses', course.id]"
+                        class="btnCourses flex align-items-center justify-content-center"
+                        styleClass="p-button-raised p-button-text text-50">Ver detalle
+                    </button>
+                    <button label="Inscribite" [routerLink]="['/form-inscr-courses', course.id]" icon="pi pi-times"
+                        class="btnCourses flex align-items-center justify-content-center"
+                        styleClass="p-button-raised p-button-text text-50" >x Inscribite
+                    </button>
                 </div>
             </div>
         </p-card>

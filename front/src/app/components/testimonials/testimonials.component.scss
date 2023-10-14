@@ -1,14 +1,14 @@
 @use '../../../scss/utilities/barrel' as *;
 
 .section__testimonials {
-
+    
     display: grid;
     place-items: center;
     margin-bottom: 5rem;
     padding: 2em 0em;
 
     .testimonials__title {
-
+        color: #070760;
         text-align: center;
         margin-bottom: 2rem;
 
@@ -22,25 +22,27 @@
         gap: 2rem;
 
         .container__card {
-
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            background-color: #748BB3;
+            box-shadow: 3px 3px 3px rgb(178, 61, 14) ;
             border: 1px solid $wireframe;
+            border-radius: .3rem;
             width: 100%;
             height: auto;
 
             .card__content {
-
+                
                 display: flex;
                 flex-direction: column;
+                align-items: center;
                 flex-grow: 1;
                 padding: 2rem;
 
                 .card__image {
-
+                    
                     .person__image {
 
                         border-radius: 100%;
-                        border: 2px solid $wireframe;
+                        border: 2px solid #FF6600;
                         object-fit: cover;
 
                     }
@@ -64,7 +66,7 @@
 
                         font-size: 1rem;
                         font-weight: 500;
-                        color: $wireframe;
+                        color: white;
 
                     }
 

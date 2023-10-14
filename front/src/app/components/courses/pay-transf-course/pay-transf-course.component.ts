@@ -41,6 +41,7 @@ export class PayTransfCourseComponent {
  // validacion para ir al mock
   validationMock() {
     if(this.transferOption === 'si'){
+      console.log('transf', this.transferOption)
       this.router.navigate(['/success']);
     }else{
       this.router.navigate(['/unsuccessfully']);
@@ -56,10 +57,11 @@ export class PayTransfCourseComponent {
     if(this.formPay.valid){
       //envio los datos
       console.log('Datos de la transferencia: ',this.formPay.value)
-      // Después de procesar, resetea el formulario
-      this.clearInput()
       //depende la opcion elejida va a success o unsuccessfully
       this.validationMock()
+      // Después de procesar, resetea el formulario
+      this.clearInput()
+      
     }else{
       alert('llenar los campo')
     }
