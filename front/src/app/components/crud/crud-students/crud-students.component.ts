@@ -1,5 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Student } from 'src/app/core/model/student.model';
 import { StudentsService } from 'src/app/services/students.service';
 
@@ -7,7 +8,7 @@ import { StudentsService } from 'src/app/services/students.service';
   selector: 'app-crud-students',
   templateUrl: './crud-students.component.html',
   styleUrls: ['./crud-students.component.scss'],
-  providers: [ConfirmationService]
+  providers: [ConfirmationService,MessageService]
 })
 export class CrudStudentsComponent implements OnInit {
 
@@ -16,7 +17,7 @@ export class CrudStudentsComponent implements OnInit {
   students: Student[] = [];
 
 
-  constructor(private studentService: StudentsService, private confirmationService: ConfirmationService){}
+  constructor(private studentService: StudentsService, private confirmationService: ConfirmationService, private messageService: MessageService){}
 
   ngOnInit(): void {
     
@@ -34,7 +35,6 @@ export class CrudStudentsComponent implements OnInit {
   }
 
 
-
   deleteStudent(id: number): void {
 
     const STUDENTDELETE = this.students.find((student) => student.id === id)
@@ -50,6 +50,14 @@ export class CrudStudentsComponent implements OnInit {
           this.studentService.deleteStudent(id).subscribe(() => {
 
             this.students = this.students.filter((student) => student.id !== id)
+
+            this.messageService.add({
+              
+              severity: 'success',
+              summary: 'Eliminado correctamente',
+              detail: `El estudiante ${STUDENTDELETE.first_name} ${STUDENTDELETE.last_name} se eliminó correctamente.`,
+              
+            });
     
           })
 
