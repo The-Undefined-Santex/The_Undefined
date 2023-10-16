@@ -1,5 +1,7 @@
 <section class="container__table">
 
+  <p-toast position="top-right" styleClass="opacity-100"></p-toast>
+
   <p-confirmDialog #cd [style]="{width: '50vw'}">
 
     <ng-template pTemplate="header">
@@ -29,6 +31,11 @@
         <th>Document Number</th>
         <th>Birth Date</th>
         <th>Situation</th>
+        <th>Phone number</th>
+        <th>Country</th>
+        <th>State</th>
+        <th>Address</th>
+        <th>Email</th>
         <th>Crud</th>
       </tr>
     </thead>
@@ -40,6 +47,11 @@
         <td>{{ student.document_number }}</td>
         <td>{{ student.birth_date | date: 'dd/MM/yy' }}</td>
         <td>{{ student.situation }}</td>
+        <td>{{ student.ContactInformation.phone_number }}</td>
+        <td>{{ student.ContactInformation.country }}</td>
+        <td>{{ student.ContactInformation.state }}</td>
+        <td>{{ student.ContactInformation.address }}</td>
+        <td>{{ student.ContactInformation.email }}</td>
         <td>
           <button [routerLink]="['/edit-students', student.id]" style="margin-bottom: 1.5rem;">Editar</button>
           <button (click)="deleteStudent(student.id)">Eliminar</button>
