@@ -1,7 +1,4 @@
-
-
 <div class="container__table">
-
     <p-confirmDialog #cd [style]="{width: '50vw'}">
         <ng-template pTemplate="header">
             <h3>Eliminar...</h3>
@@ -14,31 +11,30 @@
 
     <p-button id="createButton" [routerLink]="['/course']" label="Crear Curso"></p-button>
 
-    <table class="styled-table" >
-        <caption><h1>Lista de Cursos</h1></caption>
-        <thead>
-            <tr>
-                <th><h3>Curso</h3></th>
-                <th><h3>Subtitulo</h3></th>
-                <th><h3>Descripcion</h3></th>
-                <th><h3>Duracion</h3></th>
-                <th><h3>Fecha de inicio</h3></th>
-                <th><h3>Capacidad</h3></th>
-                <th><h3>Precio</h3></th>
-                <th><h3>Cuota</h3></th>
-                <th><h3>Si o no?</h3></th>
-                <th><h3>% Iva</h3></th>
-                <th><h3>Modalidad</h3></th> 
-                <th><h3>Horario</h3></th>
-                <th><h3>Img Banner</h3></th>
-                <br>
-                <th><h3>Detalles de curso</h3></th>
-                <th><h3>Acciones</h3></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let course of courses">
-                <td>{{ course.title }}</td>
+<p-table [value]="courses" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th><h3>Curso</h3></th>
+            <th><h3>Subtitulo</h3></th>
+            <th><h3>Descripcion</h3></th>
+            <th><h3>Duracion</h3></th>
+            <th><h3>Fecha de inicio</h3></th>
+            <th><h3>Capacidad</h3></th>
+            <th><h3>Precio</h3></th>
+            <th><h3>Cuota</h3></th>
+            <th><h3>Si o no?</h3></th>
+            <th><h3>% Iva</h3></th>
+            <th><h3>Modalidad</h3></th> 
+            <th><h3>Horario</h3></th>
+            <th><h3>Img Banner</h3></th>
+            <br>
+            <th><h3>Detalles de curso</h3></th>
+            <th><h3>Acciones</h3></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-course>
+        <tr>
+            <td>{{ course.title }}</td>
                 <td>{{ course.subtitle }}</td>
                 <td>{{ course.description }}</td>
                 <td>{{ course.duration}}</td>
@@ -64,9 +60,6 @@
                     <button [routerLink]="['/course', course.id]" style="margin-bottom: 1.5rem;">Editar</button>
                     <button (click)="deleteCourses(course.id|| 0)">Eliminar</button>
                 </td>
-            </tr>
-        </tbody>
-    </table>
-
-
-</div>
+        </tr>
+    </ng-template>
+</p-table>
