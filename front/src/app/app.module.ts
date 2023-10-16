@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MockUnsuccessfullyComponent } from './components/courses/courses-mock/mock-unsuccessfully.component';
 import { MockSuccessComponent } from './components/courses/courses-mock/mock-success.component';
 import { Error404Component } from './components/error404/error404.component';
-
+import { Student} from './services/students.service';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { Error404Component } from './components/error404/error404.component';
     ComponentsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [Student],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
