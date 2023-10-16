@@ -28,7 +28,7 @@ export class CreateStudentComponent {
       this.messageService.add({
         severity: 'success',
         summary: 'Creado correctamente',
-        detail: `Estudiante ${this.newStudent.first_name} ${this.newStudent.last_name} se creo con éxito`,
+        detail: `Estudiante ${this.newStudent.first_name} ${this.newStudent.last_name} se creo con éxito.`,
       });
 
       setTimeout(() => {
