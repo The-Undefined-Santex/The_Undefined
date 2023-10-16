@@ -72,12 +72,13 @@ export class UpdateStudentsComponent {
         .updateStudents(this.student.id, this.student)
 
         .subscribe((res) => {
+
           console.log('Esta es la respuesta', res);
 
           this.messageService.add({
             severity: 'success',
             summary: 'Actualizado correctamente',
-            detail: `Estudiante ${this.student.first_name} ${this.student.last_name} actualizado con éxito`,
+            detail: `Estudiante ${this.student.first_name} ${this.student.last_name} actualizado con éxito.`,
           });
 
           setTimeout(() => {
@@ -86,6 +87,13 @@ export class UpdateStudentsComponent {
 
           }, 3000)
 
+        }, (error) => {
+
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error al actualizar',
+            detail: `Hubo un error al actualizar el estudiante ${this.student.first_name} ${this.student.last_name}, vuelve a intentar nuevamente.`,
+          });
         });
 
     }
