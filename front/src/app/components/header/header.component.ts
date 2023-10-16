@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserModel } from 'src/app/core/model/users.model';
+import { AuthResponse } from 'src/app/core/model/authModel';
+import { AuthService } from 'src/app/services/AuthService.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit {
     constructor(
       public usersService: UsersService,
       private formBuilder: FormBuilder,
-      private cdr: ChangeDetectorRef // Agregar ChangeDetectorRef
+      private cdr: ChangeDetectorRef, // Agregar ChangeDetectorRef
+      private authService: AuthService
     ) {
       this.form = this.formBuilder.group({
         userName: ['', [Validators.required]],
@@ -47,43 +49,79 @@ export class HeaderComponent implements OnInit {
     
 
   }
+
+  loginAuth(user: string, pass: string) {
+    this.authService.login(user, pass).subscribe(response => {
+      // Aquí puedes manejar la respuesta del servidor, como guardar el token en local storage o redirigir a otra página.
+      console.log('Respuesta del servidor:', response);
+       // Accede a los datos del modelo
+    const userData = response.data;
+    const idUser = response.data.id;
+    // Actualiza la variable nombreUsuario con el nombre de usuario
+    this.nombreUsuario = userData.userName;
+      // También puedes establecer el usuario como autenticado
+      this.usuarioAutenticado = true;
+      this.userlogued = false;
   
-    login() {
-      if (this.form.valid) {
-        const username = this.form.controls['userName'].value;
-        const password = this.form.controls['password'].value;
-        
-        // Llama al servicio para buscar el usuario por nombre de usuario.
-        this.usersService.getUsers().subscribe((usersData: UserModel[]) => {
-          const matchingUser = usersData.find((user) => user.userName === username);
-          const matchingPassword = usersData.find((user) => user.password === password);
+      // Actualiza la vista
+      this.cdr.detectChanges();
+   
+    });
+    // if (user && pass) {
+    //   let login: string = "ok";
+    //   localStorage.setItem("login", login);
+
+    //   let userName: string = user;
+    //   localStorage.setItem("userName", userName,);
+
+    //   this.usuarioAutenticado = true;
+    //   this.userlogued = false;
+
+    //   this.nombreUsuario = userName;
+    //   this.cdr.detectChanges();
+
+    //   console.log("Login exitoso. Estado en localStorage:", localStorage.getItem("login"));
+    // } else {
+    //   alert("Credenciales incorrectas");
+    // }
+
+          
+    //       this.form.reset();  
+  }
   
-          if (matchingUser && matchingPassword) {
-            // Usuario autenticado correctamente.
-            let login: string = "ok";
-            localStorage.setItem("login", login );
-
-            let userName: string = matchingUser.userName;
-            localStorage.setItem("userName", userName, );
-
-            this.usuarioAutenticado = true;
-            this.userlogued = false;
-
-            // Forzar una actualización de la vista manualmente
-            this.nombreUsuario = userName;
-            this.cdr.detectChanges(); // Esto actualizará la vista
-
-            // Agrega un console.log para verificar si "ok" se guardó correctamente en localStorage.
-            console.log("Login exitoso. Estado en localStorage:", localStorage.getItem("login"));
-          } else {
-            alert("Credenciales incorrectas");
-          }
-        });
+    // login() {
+    //   if (this.form.valid) {
+    //     const username = this.form.controls['userName'].value;
+    //     const password = this.form.controls['password'].value;
         
-        this.form.reset();        
-        // this.router.navigate(['/']);
-      }
-    }
+    //     this.usersService.getUsers().subscribe((usersData: UserModel[]) => {
+    //       const matchingUser = usersData.find((user) => user.userName === username);
+    //       const matchingPassword = usersData.find((user) => user.password === password);
+  
+    //       if (matchingUser && matchingPassword) {
+    //         let login: string = "ok";
+    //         localStorage.setItem("login", login );
+
+    //         let userName: string = matchingUser.userName;
+    //         localStorage.setItem("userName", userName, );
+
+    //         this.usuarioAutenticado = true;
+    //         this.userlogued = false;
+
+    //         this.nombreUsuario = userName;
+    //         this.cdr.detectChanges(); 
+
+           
+    //         console.log("Login exitoso. Estado en localStorage:", localStorage.getItem("login"));
+    //       } else {
+    //         alert("Credenciales incorrectas");
+    //       }
+    //     });
+        
+    //     this.form.reset();        
+    //     // this.router.navigate(['/']);
+    //   }
+    // }
   
     Logout() {
       localStorage.clear();
