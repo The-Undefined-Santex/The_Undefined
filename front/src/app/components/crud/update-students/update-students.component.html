@@ -1,0 +1,117 @@
+<section class="flex justify-content-center flex-column align-items-center">
+
+    <p-toast position="top-right" styleClass="opacity-100"></p-toast>
+    <h1 class="text-center mb-4">Editar el Estudiante</h1>
+
+    <form class="flex flex-column justify-content-center gap-4">
+
+
+                <div>
+
+                    <label for="first_name" class="font-bold">Name</label>
+                    <input type="text" pInputText id="first_name" name="first_name"
+                    [(ngModel)]="student.first_name" 
+                    (input)="changesMade = true"
+                    >
+
+                </div>
+    
+                <div>
+
+                    <label for="last_name" class="font-bold">Last Name</label>
+                    <input type="text" pInputText id="last_name" name="last_name"
+                    (input)="changesMade = true"
+                    [(ngModel)]="student.last_name" >
+
+                </div>
+    
+                <div>
+
+                    <label for="document_number" class="font-bold">DNI</label>
+                    <input type="number" pInputText id="document_number" name="document_number"
+                    (input)="changesMade = true"
+                    [(ngModel)]="student.document_number" 
+                    >
+
+                </div>
+    
+                <div>
+
+                    <label for="birth_date" class="font-bold">Birth Date</label>
+                    <p-calendar type="date" id="birth_date" name="birth_date" class="text-black"
+                    [(ngModel)]="student.birth_date"
+                    dateFormat="dd/mm/yy"
+                    (onSelect)="onDateSelect()"
+                    [showIcon]="true"
+                    ></p-calendar>
+
+                </div>
+
+                <div>
+
+                    <label for="situation" class="font-bold">Situation</label>
+                    <input type="text" pInputText id="situation" name="situation"
+                    (input)="changesMade = true"
+                    [(ngModel)]="student.situation">
+
+                </div>
+
+                <div>
+
+                    <label for="phone_number" class="font-bold">Phone number</label>
+                    <input type="text" pInputText id="phone_number" name="phone_number"
+                    (input)="changesMade = true"
+                    [(ngModel)]="student.ContactInformation.phone_number">
+
+                </div>
+
+
+                <div>
+
+                    <label for="country" class="font-bold">Country</label>
+                    <input type="text" pInputText id="country" name="country"
+                    (input)="changesMade = true"
+                    [(ngModel)]="student.ContactInformation.country">
+
+                </div>
+
+                <div>
+
+                    <label for="state" class="font-bold">State</label>
+                    <input type="text" pInputText id="state" name="state"
+                    (input)="changesMade = true"
+                    [(ngModel)]="student.ContactInformation.state">
+
+                </div>
+
+                <div>
+
+                    <label for="address" class="font-bold">Address</label>
+                    <input type="text" pInputText id="address" name="address"
+                    (input)="changesMade = true"
+                    [(ngModel)]="student.ContactInformation.address">
+
+                </div>
+
+                <div>
+
+                    <label for="email" class="font-bold">Email</label>
+                    <input type="email" pInputText id="email" name="email"
+                    autocomplete="email"
+                    (input)="changesMade = true"
+                    [(ngModel)]="student.ContactInformation.email">
+
+                </div>
+
+          
+        <div class="flex justify-content-center align-items-center gap-8">
+
+            <p-button  label="Volver al crud" 
+            styleClass="p-button-raised my-5" [routerLink]="['/crud-students']"></p-button>
+            <p-button label="Actualizar" 
+            styleClass="p-button-raised my-5" (onClick)="uploadChanges()"></p-button>
+
+        </div>
+        
+    </form>
+</section>

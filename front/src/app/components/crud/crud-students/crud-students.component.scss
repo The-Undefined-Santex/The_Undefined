@@ -1,0 +1,45 @@
+.container__table {
+
+    display: grid;
+    place-items: center;
+
+    .styled-table {
+
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        box-sizing: 0 0 20px rgb(0 0 0 / 0.15);
+        
+        caption {
+    
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+    
+        }
+    
+        tr {
+    
+            background-color: #009879;
+            border-bottom: 1px solid white;
+            color: #ffffff;
+            text-align: left;
+    
+        }
+
+        th,td {
+
+            padding: 0.75rem 0.93rem;
+            border-right: 1px solid white;
+
+        }
+
+        button {
+
+            cursor: pointer;
+
+        }
+    
+    }
+
+}

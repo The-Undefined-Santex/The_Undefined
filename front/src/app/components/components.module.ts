@@ -41,10 +41,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-inscr-courses.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ResultPipe } from './pipes/result.pipe';
+<<<<<<< HEAD
 import { CrudCourseComponent } from './crud-course/crud-course.component';
 import { UpdateCoursesComponent } from './update-courses/update-courses.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
 import {  CustomDatePipe } from './pipes/custom-date.pipe';
+=======
+import { CrudStudentsComponent } from './crud/crud-students/crud-students.component';
+import { UpdateStudentsComponent } from './crud/update-students/update-students.component';
+import { CreateStudentComponent } from './crud/create-student/create-student.component';
+>>>>>>> 540555e5af2d2f507fe9ad888ecd2277391f1e55
 
 
 
@@ -67,7 +73,11 @@ import {  CustomDatePipe } from './pipes/custom-date.pipe';
                   PayTransfCourseComponent, 
                   AllCoursesComponent, 
                   FormInscrCoursesComponent, 
+<<<<<<< HEAD
                   FilterPipe, ResultPipe, CrudCourseComponent, UpdateCoursesComponent, CreateCourseComponent,  CustomDatePipe, 
+=======
+                  FilterPipe, ResultPipe, CrudStudentsComponent, UpdateStudentsComponent, CreateStudentComponent, 
+>>>>>>> 540555e5af2d2f507fe9ad888ecd2277391f1e55
                 ],
   imports: [
     CommonModule,
