@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       });
+      this.hasMany(models.Cohort, { foreignKey: 'teacherId' });
     }
   }
   Teacher.init({

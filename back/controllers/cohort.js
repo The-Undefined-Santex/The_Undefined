@@ -1,13 +1,13 @@
 const { cohortService } = require('../services');
 
-const enrollStudentInCourse = async (req, res) => {
-  const { courseId, studentId } = req.body;
+const createCohort = async (req, res) => {
+  const dataCohort = req.body;
 
   try {
-    const cohort = await cohortService.enrollStudentInCourse({ courseId, studentId });
-    return res.status(201).json({ message: 'Estudiante inscripto satisfactioriamente', cohort });
+    const cohort = await cohortService.createCohort(dataCohort);
+    return res.status(201).json({ message: 'Cohort creada satisfactioriamente', cohort });
   } catch (error) {
-    return res.status(500).json({ message: 'Error al asignar un curso al estudiante', error: error.message });
+    return res.status(500).json({ message: 'Error al crear la cohort', error: error.message });
   }
 };
 
@@ -30,8 +30,31 @@ const getCohortById = async (req, res) => {
   }
 };
 
+const updateCohort = async (req, res) => {
+  const cohortId = req.params.id;
+  const dataCohort = req.body;
+  try {
+    const cohort = await cohortService.updateCohort(cohortId, dataCohort);
+    return res.status(200).json(cohort);
+  } catch (error) {
+    return res.status(404).json({ error: 'Cohorte no encontrada' });
+  }
+};
+
+const deleteCohort = async (req, res) => {
+  const cohortId = req.params.id;
+  try {
+    const cohort = await cohortService.deleteCohort(cohortId);
+    return res.status(200).json(cohort);
+  } catch (error) {
+    return res.status(404).json({ error: 'Cohorte no encontrada' });
+  }
+};
+
 module.exports = {
-  enrollStudentInCourse,
+  createCohort,
   getAllCohorts,
   getCohortById,
+  updateCohort,
+  deleteCohort,
 };

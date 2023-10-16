@@ -10,9 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        isEmail:true,
+        unique:true,
+
       },
       password: {
+        type: Sequelize.STRING
+      },
+      rol: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -22,7 +28,13 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+         deletedAt: {
+        type: Sequelize.DATE,
+        deletedAtallowNull: true,
+   }
+    },{
+      paranoid:true,
     });
   },
   async down(queryInterface, Sequelize) {

@@ -3,12 +3,13 @@ const { Course } = require('../models');
 const { Student } = require('../models');
 const { Teacher } = require('../models');
 
-const enrollStudentInCourse = async (courseId, studentId) => {
+const createCohort = async (cohort) => {
   try {
-    const enrolledStudent = await Cohort.create(courseId, studentId);
+    const enrolledStudent = await Cohort.create(cohort);
     return enrolledStudent;
   } catch (error) {
-    throw new Error('Error al matricular al estudiante');
+    console.log(error);
+    throw new Error('Error crear la cohort');
   }
 };
 
@@ -58,8 +59,42 @@ const getCohortById = async (cohortId) => {
   }
 };
 
+const updateCohort = async (cohortId, cohortData) => {
+  try {
+    const updatedCohortCount = await Cohort.update(cohortData, {
+      where: {
+        id: cohortId,
+      },
+    });
+    if (updatedCohortCount === 0) {
+      throw new Error('Cohort no encontrada');
+    }
+    return updatedCohortCount;
+  } catch (error) {
+    throw new Error('Error al actualizar la cohorte');
+  }
+};
+
+const deleteCohort = async (cohortId) => {
+  try {
+    const deletedCohortCount = await Cohort.destroy({
+      where: {
+        id: cohortId,
+      },
+    });
+    if (deletedCohortCount === 0) {
+      throw new Error('Cohort no encontrada');
+    }
+    return deletedCohortCount;
+  } catch (error) {
+    throw new Error('Error al eliminar la cohorte');
+  }
+};
+
 module.exports = {
-  enrollStudentInCourse,
+  createCohort,
   getAllCohorts,
   getCohortById,
+  updateCohort,
+  deleteCohort,
 };
