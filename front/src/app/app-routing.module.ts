@@ -65,10 +65,6 @@ const routes: Routes = [
     loadChildren: () => import('../app/components/edit-student-routing.module').then(m => m.EditStudentRouting)
   },
   {
-    path: 'profil/:id',
-    component: Error404Component,
-  },
-  {
     path: '**',
     component: Error404Component
   }
