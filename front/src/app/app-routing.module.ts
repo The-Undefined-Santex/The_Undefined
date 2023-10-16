@@ -48,6 +48,10 @@ const routes: Routes = [
     loadChildren: () => import('./components/createCourses-routing.module').then(m => m.CreateCourseRoutingModule)
   },
   {
+    path: 'login',
+    loadChildren: () => import('./components/login-routing.module').then(m => m.LoginRoutingModule)
+  },
+  {
     path: '**',
     component: Error404Component
   }
