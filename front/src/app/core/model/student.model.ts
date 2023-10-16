@@ -9,6 +9,7 @@ export class Student {
     public birth_date: Date = new Date()
     public situation: string = ''
     public ContactInformation: ContactInformation = new ContactInformation()
+    public contactInformationId: number = 0;
 
     constructor() {}
 
