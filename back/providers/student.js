@@ -45,7 +45,7 @@ const getStudentById = async (id) => {
           include: [
             {
               model: Course,
-              attributes: ['title'],
+              attributes: ['title', 'schedules', 'banner'],
             },
             {
               model: Teacher,
