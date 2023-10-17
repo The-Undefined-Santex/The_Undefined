@@ -28,19 +28,29 @@ import { MenuModule } from 'primeng/menu';
 import { PanelModule } from 'primeng/panel';
 import { ToolbarModule } from 'primeng/toolbar';
 import { InputTextModule } from 'primeng/inputtext';
-import { ToastModule } from 'primeng/toast';
+
 import { ConfirmDialog, ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TableModule } from 'primeng/table';
 import { MessageService, ConfirmationService } from 'primeng/api';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ToastModule } from 'primeng/toast';
+import { CalendarModule } from 'primeng/calendar';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 import { AllCoursesRoutingModule } from './all-courses-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-inscr-courses.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ResultPipe } from './pipes/result.pipe';
+
 import { TeachersComponent } from './teachers/teachers.component';
 import { EditTeacherComponent } from './teachers/edit-teacher.component';
 import { NewTeachersComponent } from './teachers/new-teachers.component';
+
+import { CrudCourseComponent } from './crud-course/crud-course.component';
+import { UpdateCoursesComponent } from './update-courses/update-courses.component';
+import { CreateCourseComponent } from './create-course/create-course.component';
+import {  CustomDatePipe } from './pipes/custom-date.pipe';
 
 
 
@@ -63,7 +73,11 @@ import { NewTeachersComponent } from './teachers/new-teachers.component';
                   PayTransfCourseComponent, 
                   AllCoursesComponent, 
                   FormInscrCoursesComponent, 
+
                   FilterPipe, ResultPipe, TeachersComponent, EditTeacherComponent, NewTeachersComponent, 
+
+                  CrudCourseComponent, UpdateCoursesComponent, CreateCourseComponent,  CustomDatePipe, 
+
                 ],
   imports: [
     CommonModule,
@@ -80,9 +94,13 @@ import { NewTeachersComponent } from './teachers/new-teachers.component';
     ReactiveFormsModule,
     FormsModule,
     InputTextModule,
-    ToastModule,
+    ConfirmPopupModule,
     ConfirmDialogModule,
-    TableModule,
+    ToastModule,
+    CalendarModule,
+    InputNumberModule,
+    TableModule
+
     
   ],
   exports: [
