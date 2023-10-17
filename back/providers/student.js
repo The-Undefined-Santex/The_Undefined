@@ -1,4 +1,6 @@
-const { Student } = require('../models');
+const {
+  Student, Cohort, Course, Teacher,
+} = require('../models');
 const { ContactInformation } = require('../models');
 const { User } = require('../models');
 
@@ -37,10 +39,23 @@ const getStudentById = async (id) => {
             'address',
             'email'],
         },
-
+        {
+          model: Cohort,
+          attributes: ['id'],
+          include: [
+            {
+              model: Course,
+              attributes: ['title'],
+            },
+            {
+              model: Teacher,
+              attributes: ['firstName', 'lastName'],
+            },
+          ],
+        },
       ],
-
     });
+
     return student;
   } catch (error) {
     throw new Error('Error al obtener el estudiante');
