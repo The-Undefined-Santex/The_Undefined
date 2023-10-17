@@ -1,4 +1,4 @@
-const CATEGORIA_0 = 'Admi';
+const CATEGORIA_0 = 'Admin';
 const CATEGORIA_1 = 'Teacher';
 const CATEGORIA_2 = 'Student';
 
