@@ -52,6 +52,11 @@ import { UpdateCoursesComponent } from './update-courses/update-courses.componen
 import { CreateCourseComponent } from './create-course/create-course.component';
 import {  CustomDatePipe } from './pipes/custom-date.pipe';
 
+import { CrudStudentsComponent } from './crud/crud-students/crud-students.component';
+import { UpdateStudentsComponent } from './crud/update-students/update-students.component';
+import { CreateStudentComponent } from './crud/create-student/create-student.component';
+import { AdminPlatformComponent } from './admin-platform/admin-platform.component';
+
 
 
 
@@ -74,9 +79,14 @@ import {  CustomDatePipe } from './pipes/custom-date.pipe';
                   AllCoursesComponent, 
                   FormInscrCoursesComponent, 
 
+                  CrudCourseComponent, UpdateCoursesComponent, CreateCourseComponent,  CustomDatePipe, 
+                  CrudStudentsComponent, UpdateStudentsComponent, CreateStudentComponent, AdminPlatformComponent, 
+
+
                   FilterPipe, ResultPipe, TeachersComponent, EditTeacherComponent, NewTeachersComponent, 
 
                   CrudCourseComponent, UpdateCoursesComponent, CreateCourseComponent,  CustomDatePipe, 
+
 
                 ],
   imports: [

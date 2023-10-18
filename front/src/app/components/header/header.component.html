@@ -1,79 +1,71 @@
 <!-- Menu ppal-->
-  <nav class="menuppal">
-    <div class="borderImg border-circle w-6rem h-6rem m-2  font-bold flex 
-      align-items-center justify-content-center">
-      <img class="w-12" src="../../../assets/img/logoIncubadora.png" alt="logo">
+<nav class="menuppal">
+  <div 
+    class="border-circle border-yellow-500 w-6rem h-6rem m-2 surface-300 font-bold flex align-items-center justify-content-center">
+    logo
+  </div>
+  <div>
+    <p *ngIf="nombreUsuario">{{nombreUsuario ? 'Bienvenido ' + nombreUsuario : ""}}</p>
+  </div>
+  <ul class="nav list">
+    <li><a routerLink="/">Home</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#">Alianzas</a></li>
+    <ul class="dropdown" type="none">
+      <li><a href="index.html">Experiencias destacadas</a>
+        <ul class="cursos" type="none">
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="">Publicaciones</a></li>
+        </ul>
+      </li>
+    </ul>
+    <li><a href="#">Contacto</a></li>
+    <p-toast position="top-right" styleClass="opacity-100"></p-toast>
+    <li *ngIf="userlogued"  (click)="showDialog()">Login</li>
+    <li *ngIf="usuarioAutenticado"  (click)="Logout()">Logout</li>
+  </ul>
+</nav> 
+<p-dialog header="Login" class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+  <div class="login-form">
+    <form (ngSubmit)="login(username.value, password.value)">
+        <div class="form-group">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" #username required>
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" #password required>
+        </div>
+        <button type="submit" routerLink="/">Iniciar Sesión</button> <!--Redirigir a la vista del Alumno-->
+    </form>
+</div>
+</p-dialog>
+<div class="menu-hamburguesa">
+  <input id="check" type="checkbox">
+  <label for="check">
+    <div class="menu-hamb">
+      <span class="hamburguer"></span>
     </div>
+  </label>
+  <ul class="ul-mbl">
     <div>
       <p *ngIf="nombreUsuario">{{nombreUsuario ? 'Bienvenido ' + nombreUsuario : ""}}</p>
     </div>
-    <ul class="nav list">
-      <li><a routerLink="/">Home</a></li>
-      <li><a href="#cursos">Cursos</a></li>
-      <li><a href="#alianzas">Alianzas</a></li>
-      <ul class="dropdown" type="none">
-        <li><a href="index.html">Experiencias destacadas</a>
-          <ul class="cursos desplegable" type="none">
-            <li><a href="#testimonios">Testimonios</a></li>
-            <li><a href="#">Publicaciones</a></li>
-          </ul>
-        </li>
-      </ul>
-      <li><a href="#contacto">Contacto</a></li>
-      <li *ngIf="userlogued"  (click)="showDialog()">Login</li>
-      <li *ngIf="usuarioAutenticado"  (click)="Logout()">Logout</li>
+    <li><a routerLink="/">Home</a></li>
+    <li><a href="#cursos">Cursos</a></li>
+    <li><a href="#">Alianzas</a></li>
+    <ul class="dropdown" type="none">
+      <li><a href="index.html">Exp. destacadas</a>
+        <ul class="cursos" type="none">
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="">Publicaciones</a></li>
+        </ul>
+      </li>
     </ul>
-  </nav> 
-  <p-dialog  header="Login" class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true"
-   [style]="{ width: '50vw', border: '4px solid #FF6600' }" [draggable]="false" [resizable]="false">
-          <form  [formGroup]="form">
-              <div class="mb-3">
-                  <label for="userName" class="form-label">UserName</label>
-                  <input type="text" class="form-control" id="userName" formControlName="userName">
-                  <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)">
-                      <div *ngIf="userName?.errors?.['required']" class="text-danger">
-                          El Username es Obligatorio.
-                      </div>
-                  </div>
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="password" formControlName="password">
-                  <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
-                      <div *ngIf="password?.errors?.['required']" class="text-danger">
-                          La contraseña es Obligatorio.
-                      </div>
-                  </div>
-              </div>
- 
-          </form>
-          <p-button  (click)="login()" (click)="visible = false" >Login</p-button>
-  </p-dialog>
-  <div class="menu-hamburguesa">
-    <input id="check" type="checkbox">
-    <label for="check">
-      <div class="menu-hamb">
-        <span class="hamburguer"></span>
-      </div>
-    </label>
-    <ul class="ul-mbl">
-      <div>
-        <p class="usuarioLogueado" *ngIf="nombreUsuario">{{nombreUsuario ? 'Bienvenido ' + nombreUsuario : ""}}</p>
-      </div>
-      <li><a routerLink="/">Home</a></li>
-      <li><a href="#cursos">Cursos</a></li>
-      <li><a href="#">Alianzas</a></li>
-      <ul class="dropdown" type="none">
-        <li><a href="index.html">Exp. destacadas</a>
-          <ul class="cursos" type="none">
-            <li><a href="#testimonios">Testimonios</a></li>
-            <li><a href="">Publicaciones</a></li>
-          </ul>
-        </li>
-      </ul>
-      <li><a href="#">Contacto</a></li>
-      <li *ngIf="userlogued"  (click)="showDialog()">Login</li>
-      <li *ngIf="usuarioAutenticado"  (click)="Logout()">Logout</li>
-      
-    </ul>
+    <li><a href="#">Contacto</a></li>
+    <li *ngIf="userlogued"  (click)="showDialog()">Login</li>
+    <li *ngIf="usuarioAutenticado"  (click)="Logout()">Logout</li>
     
-  </div>
-
+  </ul>
+  
+</div>

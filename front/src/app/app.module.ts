@@ -14,6 +14,10 @@ import { MockUnsuccessfullyComponent } from './components/courses/courses-mock/m
 import { MockSuccessComponent } from './components/courses/courses-mock/mock-success.component';
 import { Error404Component } from './components/error404/error404.component';
 
+import { Student} from './services/students.service';
+import { AdminModel } from './core/model/adminModel';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +40,8 @@ import { Error404Component } from './components/error404/error404.component';
   providers: [
     
   ],
+
+  providers: [Student, AdminModel],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

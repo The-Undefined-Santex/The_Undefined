@@ -1,0 +1,82 @@
+<section class="flex justify-content-center flex-column align-items-center">
+
+  <p-toast position="top-right" styleClass="opacity-100"></p-toast>
+
+  <h1 class="mb-4">Crear Estudiante</h1>
+
+  <form (ngSubmit)="createStudent()" #studentForm="ngForm" class="flex flex-column justify-content-center gap-4">
+
+      <div>
+        <label for="first_name" class="font-bold">First Name</label>
+        <input pInputText type="text" id="first_name" name="first_name" [(ngModel)]="newStudent.first_name">
+      </div>
+      
+      <div>
+        <label for="last_name" class="font-bold">Last Name</label>
+        <input pInputText type="text" id="last_name" name="last_name" [(ngModel)]="newStudent.last_name">
+      </div>
+      
+      <div>
+        <label for="document_number" class="font-bold">Document Number</label>
+        <p-inputNumber id="document_number" name="document_number" [(ngModel)]="newStudent.document_number" mode="decimal"
+          inputId="withoutgrouping" [useGrouping]="false"></p-inputNumber>
+      </div>
+      
+      <div>
+        <label for="birth_date" class="font-bold">Birth Date</label>
+        <p-calendar type="date" id="birth_date" name="birth_date" [(ngModel)]="newStudent.birth_date"></p-calendar>
+      </div>
+      
+      <div>
+        <label for="situation" class="font-bold">Situation</label>
+        <input pInputText type="text" id="situation" name="situation" [(ngModel)]="newStudent.situation">
+      </div>
+      
+      <div>
+      
+        <label for="phone_number" class="font-bold">Phone number</label>
+        <input type="text" pInputText id="phone_number" name="phone_number"
+          [(ngModel)]="newStudent.ContactInformation.phone_number">
+      
+      </div>
+      
+      
+      <div>
+      
+        <label for="country" class="font-bold">Country</label>
+        <input type="text" pInputText id="country" name="country" [(ngModel)]="newStudent.ContactInformation.country">
+      
+      </div>
+      
+      <div>
+      
+        <label for="state" class="font-bold">State</label>
+        <input type="text" pInputText id="state" name="state" [(ngModel)]="newStudent.ContactInformation.state">
+      
+      </div>
+      
+      <div>
+      
+        <label for="address" class="font-bold">Address</label>
+        <input type="text" pInputText id="address" name="address" [(ngModel)]="newStudent.ContactInformation.address">
+      
+      </div>
+      
+      <div>
+      
+        <label for="email" class="font-bold">Email</label>
+        <input type="email" pInputText id="email" name="email" autocomplete="email"
+          [(ngModel)]="newStudent.ContactInformation.email">
+      
+      </div>
+
+
+    <footer class="flex gap-4 mb-4">
+
+      <p-button type="submit" label="Cancelar" routerLink="/crud-students"></p-button>
+      <p-button type="submit" label="Crear estudiante"></p-button>
+
+    </footer>
+
+  </form>
+</section>

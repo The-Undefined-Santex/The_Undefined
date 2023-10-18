@@ -36,7 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./components/courses-mockUnseccesfully-routing.module').then(m => m.CoursesMockUnseccesfullyModule)
   },
   {
-
     path: 'teachers',
     loadChildren: () => import('./components/teachers-routing.module').then(m => m.TeachersModule)
   },
@@ -48,10 +47,6 @@ const routes: Routes = [
       path: 'edit-teacher/:id',
       loadChildren: () => import('./components/teacher-edit-routing.module').then(m => m.TeacherEditModule)
     },
-  {
-    path: 'profil/:id',
-    component: Error404Component,
-},
  {
     path: 'crudCourses',
     loadChildren: () => import('./components/crudCourses-routing.module').then(m => m.CrudCoursesRoutingModule)
@@ -64,6 +59,26 @@ const routes: Routes = [
     path: 'course',
     loadChildren: () => import('./components/createCourses-routing.module').then(m => m.CreateCourseRoutingModule)
 
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./components/login-routing.module').then(m => m.LoginRoutingModule)
+  },
+  {
+    path: 'crud-students',
+    loadChildren: () => import('../app/components/crud-students-routing.module').then(m => m.CrudStudentsRouting)
+  },
+  {
+    path: 'create-student',
+    loadChildren: () => import('../app/components/create-student-routing.module').then(m => m.CreateStudentRouting)
+  },
+  {
+    path: 'edit-students/:id',
+    loadChildren: () => import('../app/components/edit-student-routing.module').then(m => m.EditStudentRouting)
+  },
+  {
+    path: 'adminPlatform',
+    loadChildren: () => import('../app/components/adminPlatform-routing.module').then(m => m.adminPlatformRoutingModule)
   },
   {
     path: '**',

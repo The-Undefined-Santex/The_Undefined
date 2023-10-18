@@ -1,7 +1,4 @@
-
-
 <div class="container__table">
-
     <p-confirmDialog #cd [style]="{width: '50vw'}">
         <ng-template pTemplate="header">
             <h3>Eliminar...</h3>
@@ -14,59 +11,171 @@
 
     <p-button id="createButton" [routerLink]="['/course']" label="Crear Curso"></p-button>
 
-    <table class="styled-table" >
-        <caption><h1>Lista de Cursos</h1></caption>
-        <thead>
-            <tr>
-                <th><h3>Curso</h3></th>
-                <th><h3>Subtitulo</h3></th>
-                <th><h3>Descripcion</h3></th>
-                <th><h3>Duracion</h3></th>
-                <th><h3>Fecha de inicio</h3></th>
-                <th><h3>Capacidad</h3></th>
-                <th><h3>Precio</h3></th>
-                <th><h3>Cuota</h3></th>
-                <th><h3>Si o no?</h3></th>
-                <th><h3>% Iva</h3></th>
-                <th><h3>Modalidad</h3></th> 
-                <th><h3>Horario</h3></th>
-                <th><h3>Img Banner</h3></th>
-                <br>
-                <th><h3>Detalles de curso</h3></th>
-                <th><h3>Acciones</h3></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let course of courses">
-                <td>{{ course.title }}</td>
-                <td>{{ course.subtitle }}</td>
-                <td>{{ course.description }}</td>
-                <td>{{ course.duration}}</td>
-                <td>{{ course.start_date  | date:'dd-MM-yyyy' :'UTC'}}</td>
-                <td>{{ course.capacity}}</td>
-                <td>{{ course.price}}</td>
-                <td>{{ course.due}}</td>
-                <td>{{ course.has_surcharge}}</td>
-                <td>{{ course.surcharge_percentage}}</td>
-                <td>{{ course.modality}}</td>
-                <td>{{ course.schedules}}</td>
-                <td>{{ course.banner}}</td>
-                <td></td>
-                <div *ngFor="let detail of course.courseDetails">
-                    <h3><p>Titulo: {{ detail.title }}</p></h3>
-                    <h4>Parrafo 1:</h4><p>{{ detail.paragraph1 }}</p>
-                    <h4>Parrafo 2:</h4><p>{{ detail.paragraph2 }}</p>
-                    <h4>Imagen 1:</h4><p>{{ detail.image1url }}</p>
-                    <h4>Imagen 2:</h4><p>{{ detail.image2url }}</p>                                     
-                </div>
 
-                <td>
-                    <button [routerLink]="['/course', course.id]" style="margin-bottom: 1.5rem;">Editar</button>
-                    <button (click)="deleteCourses(course.id|| 0)">Eliminar</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<p-table [value]="courses" [tableStyle]="{'min-width': '60rem'}">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            Listado de cursos
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th><h3>Curso</h3></th>
+            <th><h3>Subtitulo</h3></th>
+            <th><h3>Descripcion</h3></th>
+            <th><h3>Duracion</h3></th>
+            <th><h3>Fecha de inicio</h3></th>
+            <th><h3>Capacidad</h3></th>
+            <th><h3>Precio</h3></th>
+            <th><h3>Cuota</h3></th>
+            <th><h3>Si o no?</h3></th>
+            <th><h3>% Iva</h3></th>
+            <th><h3>Modalidad</h3></th> 
+            <th><h3>Horario</h3></th>
+            <th><h3>Img Banner</h3></th>
+            <th><h3>Detalles de curso</h3></th>
+            <th><h3>Acciones</h3></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item let-i="index">
+        <tr>
+            <td>{{ item.title }}</td>
+            <td>{{ item.subtitle }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.duration}}</td>
+            <td>{{ item.start_date | date:'dd-MM-yyyy' :'UTC'}}</td>
+            <td>{{ item.capacity}}</td>
+            <td>{{ item.price}}</td>
+            <td>{{ item.due}}</td>
+            <td>{{ item.has_surcharge}}</td>
+            <td>{{ item.surcharge_percentage}}</td>
+            <td>{{ item.modality}}</td>
+            <td>{{ item.schedules}}</td>
+            <td>{{ item.banner}}</td>
+            <td>
+                <ul>
+                    <li *ngFor="let detail of item.courseDetails">
+                        <h3>
+                            <p>{{ item.title }}: {{ detail.title }}</p>
+                        </h3>
+                        <h4>Parrafo 1:</h4>
+                        <p>{{ detail.paragraph1 }}</p>
+                        <h4>Parrafo 2:</h4>
+                        <p>{{ detail.paragraph2 }}</p>
+                        <h4>Imagen 1:</h4>
+                        <p>{{ detail.image1url }}</p>
+                        <h4>Imagen 2:</h4>
+                        <p>{{ detail.image2url }}</p>
+            
+                    </li>
+                </ul>
+            </td>
+            <!-- <ul>
+                <li *ngFor="let detail of item.courseDetails">
+                    <h3>
+                        <p>{{ item.title }}: {{ detail.title }}</p>
+                        </h3>
+                        <h4>Parrafo 1:</h4>
+                        <p>{{ detail.paragraph1 }}</p>
+                        <h4>Parrafo 2:</h4>
+                        <p>{{ detail.paragraph2 }}</p>
+                        <h4>Imagen 1:</h4>
+                        <p>{{ detail.image1url }}</p>
+                        <h4>Imagen 2:</h4>
+                        <p>{{ detail.image2url }}</p>
+            
+                    </li>
+                </ul> -->
+            
+        
 
 
-</div>
+            <!-- <div *ngFor="let detail of item.courseDetails">
+                <h3>
+                    <p>{{ item.title }}: {{ detail.title }}</p>
+                </h3>
+                <h4>Parrafo 1:</h4>
+                <p>{{ detail.paragraph1 }}</p>
+                <h4>Parrafo 2:</h4>
+                <p>{{ detail.paragraph2 }}</p>
+                <h4>Imagen 1:</h4>
+                <p>{{ detail.image1url }}</p>
+                <h4>Imagen 2:</h4>
+                <p>{{ detail.image2url }}</p>
+            </div> -->
+            <td> 
+                <button [routerLink]="['/course', item.id]" style="margin-bottom: 1.5rem;">Editar</button>
+                <button (click)="deleteCourses(item.id|| 0)">Eliminar</button>
+            </td>
+
+        </tr>
+    </ng-template>
+
+</p-table>
+
+
+
+
+
+
+<!-- <p-table [value]="courses" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th><h3>Curso</h3></th>
+            <th><h3>Subtitulo</h3></th>
+            <th><h3>Descripcion</h3></th>
+            <th><h3>Duracion</h3></th>
+            <th><h3>Fecha de inicio</h3></th>
+            <th><h3>Capacidad</h3></th>
+            <th><h3>Precio</h3></th>
+            <th><h3>Cuota</h3></th>
+            <th><h3>Si o no?</h3></th>
+            <th><h3>% Iva</h3></th>
+            <th><h3>Modalidad</h3></th> 
+            <th><h3>Horario</h3></th>
+            <th><h3>Img Banner</h3></th>
+            <th><h3>Detalles de curso</h3></th>
+            <th><h3>Acciones</h3></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-course let-i="index">
+        <tr>
+            <td>{{ course.title }}</td>
+            <td>{{ course.subtitle }}</td>
+            <td>{{ course.description }}</td>
+            <td>{{ course.duration}}</td>
+            <td>{{ course.start_date | date:'dd-MM-yyyy' :'UTC'}}</td>
+            <td>{{ course.capacity}}</td>
+            <td>{{ course.price}}</td>
+            <td>{{ course.due}}</td>
+            <td>{{ course.has_surcharge}}</td>
+            <td>{{ course.surcharge_percentage}}</td>
+            <td>{{ course.modality}}</td>
+            <td>{{ course.schedules}}</td>
+            <td>{{ course.banner}}</td>
+            
+            
+            <<div>
+                                <h3><p>Titulo: {{ course.title }}</p></h3>
+                            </div> 
+            <div *ngFor="let detail of course.courseDetails">
+                <h3>
+                    <p>{{ course.title }}: {{ detail.title }}</p>
+                </h3>
+                <h4>Parrafo 1:</h4>
+                <p>{{ detail.paragraph1 }}</p>
+                <h4>Parrafo 2:</h4>
+                <p>{{ detail.paragraph2 }}</p>
+                <h4>Imagen 1:</h4>
+                <p>{{ detail.image1url }}</p>
+                <h4>Imagen 2:</h4>
+                <p>{{ detail.image2url }}</p>
+            </div>
+            
+            <td>
+                <button [routerLink]="['/course', course.id]" style="margin-bottom: 1.5rem;">Editar</button>
+                <button (click)="deleteCourses(course.id|| 0)">Eliminar</button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table> -->

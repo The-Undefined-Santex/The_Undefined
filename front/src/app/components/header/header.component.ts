@@ -1,18 +1,23 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserModel } from 'src/app/core/model/users.model';
 import { UsersService } from 'src/app/services/users.service';
+import { AuthService } from 'src/app/services/AuthService.service';
+import { StudentsService } from 'src/app/services/students.service';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  providers: [MessageService]
 })
 export class HeaderComponent implements OnInit {
    nombreUsuario: string | null = '';  // Variable para almacenar el nombre de usuario
 
   visible: boolean = false;
 
+  
   showDialog() {
     this.visible = true;
   }
@@ -24,7 +29,13 @@ export class HeaderComponent implements OnInit {
     constructor(
       public usersService: UsersService,
       private formBuilder: FormBuilder,
-      private cdr: ChangeDetectorRef // Agregar ChangeDetectorRef
+      private cdr: ChangeDetectorRef,
+      private authService: AuthService,
+      private studentService: StudentsService,
+      private router: Router,
+      private messageService: MessageService,
+
+
     ) {
       this.form = this.formBuilder.group({
         userName: ['', [Validators.required]],
@@ -33,64 +44,71 @@ export class HeaderComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.nombreUsuario = localStorage.getItem("userName");
-    // Verifica si el valor es nulo y asigna un valor predeterminado si es necesario
-    if (this.nombreUsuario === null) {
-      this.nombreUsuario = ""; // O un valor predeterminado adecuado
-    }
-
     let login = localStorage.getItem("login");
     if (login == "ok") {
       this.usuarioAutenticado = true;
       this.userlogued = false;
     }
-    
-
   }
   
-    login() {
-      if (this.form.valid) {
-        const username = this.form.controls['userName'].value;
-        const password = this.form.controls['password'].value;
-        
-        // Llama al servicio para buscar el usuario por nombre de usuario.
-        this.usersService.getUsers().subscribe((usersData: UserModel[]) => {
-          const matchingUser = usersData.find((user) => user.userName === username);
-          const matchingPassword = usersData.find((user) => user.password === password);
-  
-          if (matchingUser && matchingPassword) {
-            // Usuario autenticado correctamente.
-            let login: string = "ok";
-            localStorage.setItem("login", login );
 
-            let userName: string = matchingUser.userName;
-            localStorage.setItem("userName", userName, );
-
-            this.usuarioAutenticado = true;
-            this.userlogued = false;
-
-            // Forzar una actualización de la vista manualmente
-            this.nombreUsuario = userName;
-            this.cdr.detectChanges(); // Esto actualizará la vista
-
-            // Agrega un console.log para verificar si "ok" se guardó correctamente en localStorage.
-            console.log("Login exitoso. Estado en localStorage:", localStorage.getItem("login"));
-          } else {
-            alert("Credenciales incorrectas");
-          }
-        });
-        
-        this.form.reset();        
-        // this.router.navigate(['/']);
+  login(user: string, pass: string) {
+    this.authService.login(user, pass).subscribe(response => {
+      console.log(response);
+      if (response && response.data) {
+      this.visible = false;       
+      const users = response.data.userName;
+      if(user !== users){
+        console.log("El usuario no existe");
       }
+      const userData = response.data;
+      const rol = response.data.rol;
+      if (rol === "Student") {
+        this.router.navigate(['/platform-students']);
+        this.usuarioAutenticado = true; 
+      } else if (rol === "Admin") {
+        this.router.navigate(['/adminPlatform']);
+        this.usuarioAutenticado = true;
+      }
+      localStorage.setItem('studentId', userData.id.toString());
+      let login: string = "ok";
+      localStorage.setItem("login", login);
+      this.usuarioAutenticado = true;
+      this.userlogued = false;
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Usuario o contraseña incorrectos',
+      });
+      this.visible = false;
     }
+    });
+  }
+
+
+
   
-    Logout() {
-      localStorage.clear();
-      window.location.reload();
-    }
-  
-    get userName() {
+  Logout() {
+
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Deslogueo exitoso',
+      detail: `Redireccionando a la pagina principal`,
+    });
+
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 3000);
+
+    localStorage.clear();
+    this.usuarioAutenticado = false;
+    this.userlogued = true;
+  }
+
+
+
+    guserName() {
       return this.form.get("userName");
     }
   

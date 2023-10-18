@@ -1,0 +1,64 @@
+<section class="container__table">
+
+  <p-toast position="top-right" styleClass="opacity-100"></p-toast>
+
+  <p-confirmDialog #cd [style]="{width: '50vw'}">
+
+    <ng-template pTemplate="header">
+
+      <h3>Header Content</h3>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+
+      <button type="button" pButton icon="pi pi-times" label="Cancelar" (click)="cd.reject()"></button>
+      <button type="button" pButton icon="pi pi-check" label="Eliminar" (click)="cd.accept()"></button>
+
+    </ng-template>
+    
+  </p-confirmDialog>
+
+  <p-button [routerLink]="['/create-student']" label="Crear estudiante"></p-button>
+
+  <table class="styled-table">
+    <caption>Lista de estudiantes</caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Document Number</th>
+        <th>Birth Date</th>
+        <th>Situation</th>
+        <th>Phone number</th>
+        <th>Country</th>
+        <th>State</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Crud</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.first_name }}</td>
+        <td>{{ student.last_name }}</td>
+        <td>{{ student.document_number }}</td>
+        <td>{{ student.birth_date | date: 'dd/MM/yy' }}</td>
+        <td>{{ student.situation }}</td>
+        <td>{{ student.ContactInformation.phone_number }}</td>
+        <td>{{ student.ContactInformation.country }}</td>
+        <td>{{ student.ContactInformation.state }}</td>
+        <td>{{ student.ContactInformation.address }}</td>
+        <td>{{ student.ContactInformation.email }}</td>
+        <td>
+          <button [routerLink]="['/edit-students', student.id]" style="margin-bottom: 1.5rem;">Editar</button>
+          <button (click)="deleteStudent(student.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</section>
