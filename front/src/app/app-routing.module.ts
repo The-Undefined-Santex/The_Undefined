@@ -37,8 +37,6 @@ const routes: Routes = [
   },
   {
 
-<<<<<<< HEAD
-=======
     path: 'teachers',
     loadChildren: () => import('./components/teachers-routing.module').then(m => m.TeachersModule)
   },
@@ -55,7 +53,6 @@ const routes: Routes = [
     component: Error404Component,
 },
  {
->>>>>>> dev
     path: 'crudCourses',
     loadChildren: () => import('./components/crudCourses-routing.module').then(m => m.CrudCoursesRoutingModule)
   },
