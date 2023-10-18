@@ -37,6 +37,25 @@ const routes: Routes = [
   },
   {
 
+<<<<<<< HEAD
+=======
+    path: 'teachers',
+    loadChildren: () => import('./components/teachers-routing.module').then(m => m.TeachersModule)
+  },
+    {
+      path: 'new-teacher',
+      loadChildren: () => import('./components/teacher-new-routing.module').then(m => m.TeacherNewModule)
+    },
+    {
+      path: 'edit-teacher/:id',
+      loadChildren: () => import('./components/teacher-edit-routing.module').then(m => m.TeacherEditModule)
+    },
+  {
+    path: 'profil/:id',
+    component: Error404Component,
+},
+ {
+>>>>>>> dev
     path: 'crudCourses',
     loadChildren: () => import('./components/crudCourses-routing.module').then(m => m.CrudCoursesRoutingModule)
   },
@@ -47,6 +66,7 @@ const routes: Routes = [
   {
     path: 'course',
     loadChildren: () => import('./components/createCourses-routing.module').then(m => m.CreateCourseRoutingModule)
+
   },
   {
     path: 'login',

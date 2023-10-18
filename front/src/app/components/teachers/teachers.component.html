@@ -1,0 +1,55 @@
+<div class="card px-2">
+    <p-toast position="top-center" ></p-toast>
+    <p-confirmDialog header="Confirmacion" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <h1 class="text-center">{{titulo}}</h1>
+
+    <p-button icon="pi pi-fw pi-plus" label="Nuevo" 
+    styleClass="p-button-raised my-5" [routerLink]="['/new-teacher']" ></p-button>
+    
+    <p-table
+        [value]="teachers"
+        [paginator]="true"
+        [rows]="5"
+        [responsive]="true">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DNI</th>
+                <th>Fecha de nacimiento</th>
+                <th>Telefono</th>
+                <th>Pais</th>
+                <th>Estado</th>
+                <th>Direaccion</th>
+                <th>Email</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-teacher>
+            <tr>
+                <td>{{ teacher.firstName }}</td>
+                <td>{{ teacher.lastName }}</td>
+                <td>{{ teacher.dni }}</td>
+                <td>{{ teacher.birth_date | date: 'dd/MM/YYYY' }}</td>
+                <td>{{ teacher.ContactInformation.phone_number }} </td>
+                <td>{{ teacher.ContactInformation.country }}</td>
+                <td> {{ teacher.ContactInformation.state}}</td>
+                <td>{{ teacher.ContactInformation.address }}</td>
+                <td>{{ teacher.ContactInformation.email}}</td>
+
+                <td><p-button icon="pi pi-fw pi-pencil" 
+                    [routerLink]="['/edit-teacher', teacher.id]"
+                    styleClass="p-button-rounded p-button-success">
+                </p-button></td>
+                <td><p-button icon="pi pi-fw pi-trash" 
+                    styleClass="p-button-rounded p-button-warning" (onClick)="deleteTeacher(teacher.id)">
+                </p-button></td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+</div> 
+
+

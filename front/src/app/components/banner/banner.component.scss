@@ -2,17 +2,20 @@ header {
     display:flex;
     justify-content: flex-start;
     align-items: center;
-    background: url(../../../assets/banner.jpg) no-repeat;
+    background: url(../../../assets/img/bannerIncubadora.png) no-repeat ;
     height: 50em;
     background-size: cover;
     background-attachment: fixed;
+    
 }
 
 
 header h1 {
-    color:black;    
-    font-size: 8vw;
-    margin-top: 0;
+    //sombra b
+    text-shadow: 0 0 10px rgba(235, 224, 224, 0.5);
+    color:rgb(217, 213, 213);    
+    font-size: 5vw;
+    margin-top: 1rem;
     padding-left: 0.5em;
     text-align: left;
 

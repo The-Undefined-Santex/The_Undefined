@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -18,7 +21,8 @@ import { Student} from './services/students.service';
     AppComponent,
     MockUnsuccessfullyComponent,
     MockSuccessComponent,    
-    Error404Component
+    Error404Component,
+    
 
   
   ],
@@ -28,8 +32,12 @@ import { Student} from './services/students.service';
     BrowserAnimationsModule,
     ComponentsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [Student],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
