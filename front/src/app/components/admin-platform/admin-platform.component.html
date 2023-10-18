@@ -1,0 +1,52 @@
+<p-toast position="top-right"></p-toast>
+
+<div class="p-d-flex p-ai-center p-mb-2">
+  <h1 style="text-align: center;">{{ adminSaludo }}</h1>
+</div>
+<br>
+
+<div class="formgroup-inline justify-content-center">
+    <div class="field">
+        <p-card  header="Administrar Cursos" [style]="{ width: '360px' }">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="https://becasparatodos.com/wp-content/uploads/2020/08/cursos-gratis-online-con-certificacio.png" />
+            </ng-template>
+            <p>
+                Accede a la plataforma para visualizar los Cursos disponibles, modifica, agrega y elimina los registros que necesites....
+            </p>
+            <ng-template  pTemplate="footer">
+                <p-button class="button" [routerLink]="['/crudCourses']"><h4>Acceder</h4></p-button>
+            </ng-template>
+        </p-card>
+    </div>
+    <div class="field">
+        <p-card  header="Administrar Profesores" [style]="{ width: '360px' }">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="https://cdn-icons-png.flaticon.com/512/3413/3413591.png" />
+            </ng-template>
+            <p>
+                Accede a la plataforma para visualizar los Profesores disponibles, modifica, agrega y elimina los registros que necesites....
+            </p>
+            <ng-template class="botones-acceder" pTemplate="footer">
+                <p-button class="button" [routerLink]="['/teachers']"><h4>Acceder</h4></p-button>
+            </ng-template>
+        </p-card>
+        
+    </div>
+    <div class="field">
+        <p-card  header="Administrar alumnos" [style]="{ width: '360px' }">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="https://cdn-icons-png.flaticon.com/512/9972/9972270.png" />
+            </ng-template>
+            <p>
+                Accede a la plataforma para visualizar los Alumnos disponibles, modifica, agrega y elimina los registros que necesites....
+            </p>
+            <ng-template class="botones-acceder" pTemplate="footer">
+                <p-button [routerLink]="['/crud-students']"><h4> Acceder </h4></p-button>
+            </ng-template>
+        </p-card>
+        
+    </div>
+   
+</div>
+

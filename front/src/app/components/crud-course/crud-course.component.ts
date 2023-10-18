@@ -3,6 +3,7 @@ import { ConfirmationService } from 'primeng/api';
 import { CoursesModel } from 'src/app/core/model/courses.model';
 import { CrudCoursesService } from 'src/app/services/crudcourses.service';
 import { DatePipe } from '@angular/common';
+// import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -13,13 +14,20 @@ import { DatePipe } from '@angular/common';
 
 })
 export class CrudCourseComponent implements OnInit {
-  visible: boolean = false;
 
   courses: CoursesModel[] = [];
 
+
   formattedStartDate: (string | null)[] = [];
 
-  
+  display: boolean[] = [];
+
+  showDialog(i: number): void {
+    this.display[i] = !this.display[i]; // Cambia el estado de visibilidad para el curso en la posición 'i'
+    console.log(i);
+  }
+
+
 
   constructor(private confirmationService: ConfirmationService, private crudCourseService: CrudCoursesService,
     private datePipe: DatePipe){}
@@ -28,7 +36,18 @@ export class CrudCourseComponent implements OnInit {
     
     this.loadCourses();
 
+    // Inicializar el arreglo display
+   
+
+
   }
+
+
+
+  
+//   selectProduct(course: CoursesModel) {
+//     this.messageService.add({ severity: 'info', summary: 'Product Selected', detail: course.title });
+// }
 
   loadCourses(): void {
     
@@ -39,6 +58,7 @@ export class CrudCourseComponent implements OnInit {
       this.formattedStartDate = this.courses.map((course) =>
         course.start_date ? this.datePipe.transform(course.start_date, 'dd/MM/yyyy') : null
       );
+      // this.visible = new Array(this.courses.length).fill(false); // Inicializa el arreglo con valores falsos
       console.log(data);
 
     })

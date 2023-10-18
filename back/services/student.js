@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const { StudentProvider } = require('../providers');
 const { User, ContactInformation } = require('../models');
 const { userTypeMiddleware, passwordMiddleware } = require('../middleware');

@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const { teacherProvider } = require('../providers');
 const { User, ContactInformation } = require('../models');
 const { userTypeMiddleware, passwordMiddleware } = require('../middleware');
@@ -24,11 +25,18 @@ const createTeacher = async (teacher) => {
   try {
     // Se crea el usuario a partir del mail del docente
     // y la contraseña a partir del DNI
+<<<<<<< HEAD
     const pass = await passwordMiddleware.hashPassword((teacher.dni).toString());
     const newUser = await User.create({
       userName: teacher.ContactInformation.email,
       password: pass,
       rol: userTypeMiddleware.CATEGORIA_1,
+=======
+    const hashedPassword = await bcrypt.hash(teacher.dni.toString(), 10);
+    const newUser = await User.create({
+      userName: teacher.ContactInformation.email,
+      password: hashedPassword,
+>>>>>>> ludmila
     });
     // Asigna el id del usuario al docente
     teacher.userId = newUser.id;

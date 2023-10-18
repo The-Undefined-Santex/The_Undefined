@@ -13,7 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MockUnsuccessfullyComponent } from './components/courses/courses-mock/mock-unsuccessfully.component';
 import { MockSuccessComponent } from './components/courses/courses-mock/mock-success.component';
 import { Error404Component } from './components/error404/error404.component';
+
 import { Student} from './services/students.service';
+import { AdminModel } from './core/model/adminModel';
 
 
 @NgModule({
@@ -34,10 +36,9 @@ import { Student} from './services/students.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
-  ],
-  providers: [
-    Student
-  ],
+  ],                             
+
+  providers: [Student, AdminModel],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

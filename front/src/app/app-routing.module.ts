@@ -36,7 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./components/courses-mockUnseccesfully-routing.module').then(m => m.CoursesMockUnseccesfullyModule)
   },
   {
-
     path: 'teachers',
     loadChildren: () => import('./components/teachers-routing.module').then(m => m.TeachersModule)
   },
@@ -48,10 +47,6 @@ const routes: Routes = [
       path: 'edit-teacher/:id',
       loadChildren: () => import('./components/teacher-edit-routing.module').then(m => m.TeacherEditModule)
     },
-  {
-    path: 'profil/:id',
-    component: Error404Component,
-},
  {
     path: 'crudCourses',
     loadChildren: () => import('./components/crudCourses-routing.module').then(m => m.CrudCoursesRoutingModule)
@@ -84,6 +79,8 @@ const routes: Routes = [
   {
     path: 'platform-students/:id',
     loadChildren: () => import('../app/components/platform-students-routing.module').then(m => m.PlatformStudentsRouting)
+    path: 'adminPlatform',
+    loadChildren: () => import('../app/components/adminPlatform-routing.module').then(m => m.adminPlatformRoutingModule)
   },
   {
     path: '**',

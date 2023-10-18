@@ -27,8 +27,6 @@ export class UpdateCoursesComponent implements OnInit {
     private messageService: MessageService,
     private datePipe: DatePipe,
     private customDatePipe: CustomDatePipe ){}
-
-   
     
     ngOnInit(): void {
 
@@ -54,10 +52,6 @@ export class UpdateCoursesComponent implements OnInit {
 
   }
 
-  // Esta función convierte la fecha en el formato 'dd-MM-yyyy' al formato 'yyyy-MM-dd'
-  
-
-    
     uploadChanges(): void {
       if (!this.changesMade) {
         alert('No hay cambios para actualizar');
@@ -74,7 +68,6 @@ export class UpdateCoursesComponent implements OnInit {
         alert('El curso seleccionado no tiene un ID válido para actualizar');
         return;
       }
-       // Antes de enviar los cambios, convierte la fecha al formato de la base de datos
       courseToUpdate.start_date = this.convertToDatabaseFormat(courseToUpdate.start_date);
       this.crudCourseService.updateCourses(courseToUpdate.id, courseToUpdate).subscribe(res => {
         console.log('Esta es la respuesta', res);
@@ -99,7 +92,7 @@ export class UpdateCoursesComponent implements OnInit {
         const year = parts[2];
         return `${year}-${month}-${day}`;
       }
-      return dateString; // En caso de un formato incorrecto, simplemente retornamos el valor original
+      return dateString; 
     }
   
   }
