@@ -4,10 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { AuthService } from 'src/app/services/AuthService.service';
 import { StudentsService } from 'src/app/services/students.service';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
-=======
 import { MessageService } from 'primeng/api';
->>>>>>> ludmila
 
 @Component({
   selector: 'app-header',
@@ -34,17 +31,11 @@ export class HeaderComponent implements OnInit {
       private formBuilder: FormBuilder,
       private cdr: ChangeDetectorRef,
       private authService: AuthService,
-<<<<<<< HEAD
-      private router: Router,
-      private studentModel: Student,
-      private studentService: StudentsService
-=======
       private studentService: StudentsService,
       private router: Router,
       private messageService: MessageService,
 
 
->>>>>>> ludmila
     ) {
       this.form = this.formBuilder.group({
         userName: ['', [Validators.required]],
@@ -73,18 +64,14 @@ export class HeaderComponent implements OnInit {
       const userData = response.data;
       const rol = response.data.rol;
       if (rol === "Student") {
-        this.router.navigate(['/platform-students']);
+        this.router.navigate(['/platform-students', userData.id]);
         this.usuarioAutenticado = true; 
       } else if (rol === "Admin") {
         this.router.navigate(['/adminPlatform']);
         this.usuarioAutenticado = true;
-<<<<<<< HEAD
         this.userlogued = false;
 
-        this.router.navigate(['/platform-students', userData.id]);
-
         this.cdr.detectChanges();
-=======
       }
       localStorage.setItem('studentId', userData.id.toString());
       let login: string = "ok";
@@ -96,7 +83,6 @@ export class HeaderComponent implements OnInit {
         severity: 'error',
         summary: 'Error',
         detail: 'Usuario o contraseña incorrectos',
->>>>>>> ludmila
       });
       this.visible = false;
     }
@@ -106,14 +92,6 @@ export class HeaderComponent implements OnInit {
 
 
   
-<<<<<<< HEAD
-    Logout() {
-      window.location.href = "http://localhost:4200/"
-      localStorage.clear();
-    }
-  
-    get userName() {
-=======
   Logout() {
 
     this.messageService.add({
@@ -134,7 +112,6 @@ export class HeaderComponent implements OnInit {
 
 
     guserName() {
->>>>>>> ludmila
       return this.form.get("userName");
     }
   

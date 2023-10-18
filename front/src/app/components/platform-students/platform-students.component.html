@@ -1,5 +1,7 @@
 <section class="p-5 flex justify-content-center gap-8">
 
+    <h1>Hola {{student.first_name}} Bienvenido!</h1>
+
     <div>
 
         <header>
@@ -10,8 +12,12 @@
 
         <article>
 
-            <p>ID: {{student.id}}</p>
-            <p>Nombre del estudiante: {{student.first_name}}</p>
+            <p>Legajo: {{student.id}}</p>
+            <p>Nombre: {{student.first_name}}</p>
+            <p>Apellido: {{student.last_name}}</p>
+            <p>Fecha de nacimiento: {{student.birth_date | date:'dd-MM-yyyy' :'UTC'}}</p>
+            <p>Situación de pago: {{student.situation}}</p>
+
 
         </article>
 

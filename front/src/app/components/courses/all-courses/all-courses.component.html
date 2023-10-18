@@ -62,7 +62,7 @@
                         class="card__price--bold">{{coursesService.getRoundedPrice(course.price, course.due)}}</span>
                 </p>
                 <p class="card__starter mb-3">
-                    fecha de inicio: {{ course.start_date }}
+                    fecha de inicio: {{ course.start_date | date:'dd-MM-yyyy' :'UTC' }}
                 </p>
                 <p-divider></p-divider>
                 <div class="flex justify-content-start flex-wrap button gap-4">
@@ -70,7 +70,7 @@
                         class="btnCourses flex align-items-center justify-content-center"
                         styleClass="p-button-raised p-button-text text-50">Ver detalle
                     </button>
-                    <button label="Inscribite" [routerLink]="['/form-inscr-courses', course.id]" icon="pi pi-times"
+                    <button label="Inscribite" [routerLink]="['/create-student']" icon="pi pi-times"
                         class="btnCourses flex align-items-center justify-content-center"
                         styleClass="p-button-raised p-button-text text-50" >x Inscribite
                     </button>
