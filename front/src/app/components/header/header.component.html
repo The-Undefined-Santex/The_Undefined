@@ -20,13 +20,13 @@
       </li>
     </ul>
     <li><a href="#">Contacto</a></li>
+    <p-toast position="top-right" styleClass="opacity-100"></p-toast>
     <li *ngIf="userlogued"  (click)="showDialog()">Login</li>
     <li *ngIf="usuarioAutenticado"  (click)="Logout()">Logout</li>
   </ul>
 </nav> 
 <p-dialog header="Login" class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
   <div class="login-form">
-    <h2>Iniciar Sesión</h2>
     <form (ngSubmit)="login(username.value, password.value)">
         <div class="form-group">
             <label for="username">Usuario:</label>
