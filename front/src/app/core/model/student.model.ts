@@ -1,3 +1,4 @@
+import { Cohorts } from "./cohorts.model";
 import { ContactInformation } from "./contact-information.model";
 
 export class Student {
@@ -10,6 +11,7 @@ export class Student {
     public situation: string = ''
     public ContactInformation: ContactInformation = new ContactInformation()
     public contactInformationId: number = 0;
+    public Cohorts: Cohorts[] = [];
 
     constructor() {}
 

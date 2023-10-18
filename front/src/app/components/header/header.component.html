@@ -20,8 +20,8 @@
       </li>
     </ul>
     <li><a href="#">Contacto</a></li>
-    <li *ngIf="userlogued"  (click)="showDialog()">Login</li>
-    <li *ngIf="usuarioAutenticado"  (click)="Logout()">Logout</li>
+    <li *ngIf="userlogued"  (click)="showDialog()" class="border-solid cursor-pointer">Iniciar sesión</li>
+    <li *ngIf="usuarioAutenticado"  (click)="Logout()" class="border-solid cursor-pointer">Cerrar sesión</li>
   </ul>
 </nav> 
 <p-dialog header="Login" class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">

@@ -1,1 +1,49 @@
-<p>platform-students works!</p>
+<section class="p-5 flex justify-content-center gap-8">
+
+    <div>
+
+        <header>
+
+            <h2 class="font-bold">Información del estudiante</h2>
+
+        </header>
+
+        <article>
+
+            <p>ID: {{student.id}}</p>
+            <p>Nombre del estudiante: {{student.first_name}}</p>
+
+        </article>
+
+    </div>
+
+    <div>
+
+        <header>
+
+            <h2 class="font-bold">Información de la cohorte</h2>
+
+        </header>
+
+        <article *ngFor="let cohort of student.Cohorts">
+
+            <header>
+
+                <h2 class="font-medium">{{ cohort.Course.title }}</h2>
+
+            </header>
+
+            <time><span class="font-semibold">Horario:</span> {{ cohort.Course.schedules }}</time>
+
+            <p><span  class="font-semibold">Profesor:</span> {{ cohort.Teacher.firstName }} {{ cohort.Teacher.lastName }}</p>
+
+            <figure>
+                <img [src]="cohort.Course.banner" alt="{{ cohort.Course.title }}" width="200">
+            </figure>
+
+
+        </article>
+
+    </div>
+
+</section>

@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { AuthService } from 'src/app/services/AuthService.service';
 import { Student } from 'src/app/core/model/student.model';
 import { StudentsService } from 'src/app/services/students.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
       private formBuilder: FormBuilder,
       private cdr: ChangeDetectorRef,
       private authService: AuthService,
+      private router: Router,
       private studentModel: Student,
       private studentService: StudentsService
     ) {
@@ -61,6 +63,8 @@ export class HeaderComponent implements OnInit {
         this.usuarioAutenticado = true;
         this.userlogued = false;
 
+        this.router.navigate(['/platform-students', userData.id]);
+
         this.cdr.detectChanges();
       });
 
@@ -68,8 +72,8 @@ export class HeaderComponent implements OnInit {
   }
   
     Logout() {
+      window.location.href = "http://localhost:4200/"
       localStorage.clear();
-      window.location.reload();
     }
   
     get userName() {
