@@ -98,6 +98,22 @@ a {
   text-align: center;
 }
 
+.position-icon {
+
+  position: relative;
+
+  .password-toggle-icon {
+
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+  
+  }
+
+}
+
 
 .dropdown>li>ul {
   display: none;

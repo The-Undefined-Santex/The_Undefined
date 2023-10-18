@@ -11,7 +11,7 @@
     <p *ngIf="nombreUsuario">{{nombreUsuario ? 'Bienvenido ' + nombreUsuario : ""}}</p>
   </div>
   <ul class="nav list">
-    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/">Inicio</a></li>
     <li><a href="#cursos">Cursos</a></li>
     <li><a href="#alianzas">Alianzas</a></li>
     <ul class="dropdown" type="none">
@@ -26,18 +26,23 @@
     <li *ngIf="usuarioAutenticado"  (click)="Logout()" class="border-solid cursor-pointer">Cerrar sesión</li>
   </ul>
 </nav> 
-<p-dialog class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+<p-dialog header="Iniciar sesión" class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
   <div class="login-form">
-    <form (ngSubmit)="login(username.value, password.value)">
+    <form (ngSubmit)="login(username.value, password.value)" class="flex justify-content-center align-items-center flex-column gap-5">
         <div class="form-group">
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" #username required>
+            <label for="username" class="font-bold">Usuario:</label>
+            <input type="text" id="username" name="username" pInputText #username required placeholder="Estudiante123">
         </div>
         <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" #password required>
+            <label for="password" class="font-bold">Contraseña:</label>
+             <div class="position-icon">
+              <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" pInputText #password required
+              placeholder="Contraseña123">
+            <i [ngClass]="showPassword ? 'pi pi-eye-slash' : 'pi pi-eye' " class="password-toggle-icon cursor-pointer"
+              (click)="showPassword = !showPassword"></i>
+             </div>
         </div>
-        <button type="submit" routerLink="/">Iniciar Sesión</button> <!--Redirigir a la vista del Alumno-->
+        <p-button label="Iniciar sesión" type="submit" routerLink="/" class="cursor-pointer"></p-button>
     </form>
 </div>
 </p-dialog>
@@ -52,7 +57,7 @@
     <div>
       <p *ngIf="nombreUsuario">{{nombreUsuario ? 'Bienvenido ' + nombreUsuario : ""}}</p>
     </div>
-    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/">Inicio</a></li>
     <li><a href="#cursos">Cursos</a></li>
     <li><a href="#alianzas">Alianzas</a></li>
     <ul class="dropdown" type="none">
