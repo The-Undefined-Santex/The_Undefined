@@ -83,6 +83,7 @@ a {
   padding: 5px 10px 5px 10px;
   border-radius: 20px;
   z-index: 1001;
+  margin-left: 0;
 
 }
 //desplegable
@@ -94,12 +95,15 @@ a {
   margin: 1px 5px;
   border-radius: 20px;
   z-index: 1001;
+  text-align: center;
 }
+
 
 .dropdown>li>ul {
   display: none;
   position: absolute;
   margin: auto;
+  width: 20%;
 }
 
 .dropdown li:hover>ul {

@@ -10,21 +10,20 @@
   <ul class="nav list">
     <li><a routerLink="/">Home</a></li>
     <li><a href="#cursos">Cursos</a></li>
-    <li><a href="#">Alianzas</a></li>
+    <li><a href="#alianzas">Alianzas</a></li>
     <ul class="dropdown" type="none">
-      <li><a href="index.html">Experiencias destacadas</a>
+      <li><a>Experiencias destacadas</a>
         <ul class="cursos" type="none">
           <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="">Publicaciones</a></li>
         </ul>
       </li>
     </ul>
-    <li><a href="#">Contacto</a></li>
+    <li><a href="#contacto">Contacto</a></li>
     <li *ngIf="userlogued"  (click)="showDialog()" class="border-solid cursor-pointer">Iniciar sesión</li>
     <li *ngIf="usuarioAutenticado"  (click)="Logout()" class="border-solid cursor-pointer">Cerrar sesión</li>
   </ul>
 </nav> 
-<p-dialog header="Login" class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+<p-dialog class="flex align-items-center justify-content-center" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
   <div class="login-form">
     <h2>Iniciar Sesión</h2>
     <form (ngSubmit)="login(username.value, password.value)">
@@ -53,16 +52,15 @@
     </div>
     <li><a routerLink="/">Home</a></li>
     <li><a href="#cursos">Cursos</a></li>
-    <li><a href="#">Alianzas</a></li>
+    <li><a href="#alianzas">Alianzas</a></li>
     <ul class="dropdown" type="none">
-      <li><a href="index.html">Exp. destacadas</a>
+      <li><a>Exp. destacadas</a>
         <ul class="cursos" type="none">
           <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="">Publicaciones</a></li>
         </ul>
       </li>
     </ul>
-    <li><a href="#">Contacto</a></li>
+    <li><a href="#contacto">Contacto</a></li>
     <li *ngIf="userlogued"  (click)="showDialog()">Login</li>
     <li *ngIf="usuarioAutenticado"  (click)="Logout()">Logout</li>
     

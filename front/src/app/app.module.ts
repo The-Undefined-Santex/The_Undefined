@@ -36,7 +36,7 @@ import { Student} from './services/students.service';
     ReactiveFormsModule
   ],
   providers: [
-    
+    Student
   ],
   bootstrap: [AppComponent],
 })

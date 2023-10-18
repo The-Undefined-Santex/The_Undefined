@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import emailjs, {EmailJSResponseStatus} from '@emailjs/browser';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
+  providers:[MessageService]
 })
 export class ContactComponent {
 
   isSending: boolean = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private messageService: MessageService) {}
 
   validateEmailDomain(control: FormControl) {
     const email = control.value.toLowerCase();
@@ -53,19 +55,31 @@ export class ContactComponent {
       )
       .then(
         (result: EmailJSResponseStatus) => {
-          alert("Formulario enviado correctamente");
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Mensaje enviado correctamente!',
+            detail: `Responderemos tu duda lo más pronto posible.`,
+          });
           this.isSending = false;
           this.onReset();
         },
         (error) => {
           this.isSending = false;
-          alert("Error al enviar el formulario");
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error al enviar el formulario',
+            detail: `Hubo un error al enviar tu formulario de contacto.`,
+          });
         }
       );
 
     } else {
 
-      alert('Por favor completa el formulario correctamente')
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Error al enviar el formulario',
+        detail: `Revisa todos los campos.`,
+      });
 
     }
    
