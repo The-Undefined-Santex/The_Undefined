@@ -81,6 +81,10 @@ const routes: Routes = [
     loadChildren: () => import('../app/components/adminPlatform-routing.module').then(m => m.adminPlatformRoutingModule)
   },
   {
+    path: 'inscripcion',
+    loadChildren: () => import('../app/components/inscripcion-student.routing').then(m => m.InscripcionRoutingModule)
+  },
+  {
     path: '**',
     component: Error404Component
   }
