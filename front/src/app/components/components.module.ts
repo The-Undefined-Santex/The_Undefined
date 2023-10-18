@@ -50,6 +50,7 @@ import {  CustomDatePipe } from './pipes/custom-date.pipe';
 import { CrudStudentsComponent } from './crud/crud-students/crud-students.component';
 import { UpdateStudentsComponent } from './crud/update-students/update-students.component';
 import { CreateStudentComponent } from './crud/create-student/create-student.component';
+import { PlatformStudentsComponent } from './platform-students/platform-students.component';
 
 
 
@@ -73,7 +74,7 @@ import { CreateStudentComponent } from './crud/create-student/create-student.com
                   AllCoursesComponent, 
                   FormInscrCoursesComponent, 
                   FilterPipe, ResultPipe, CrudCourseComponent, UpdateCoursesComponent, CreateCourseComponent,  CustomDatePipe, 
-                  CrudStudentsComponent, UpdateStudentsComponent, CreateStudentComponent, 
+                  CrudStudentsComponent, UpdateStudentsComponent, CreateStudentComponent, PlatformStudentsComponent, 
                 ],
   imports: [
     CommonModule,
