@@ -1,28 +1,27 @@
 @use '../../../scss/utilities/barrel' as *;
 
 .section__contact {
-
+    background-color: #c3d2ec;
+    color: #070760;
     display: grid;
     place-items: center;
-    margin-bottom: 2rem;
     padding: 1rem;
     border-top: 1px solid $wireframe;
     border-bottom: 1px solid $wireframe;
 
     .section__ubication {
-
         display: flex;
         justify-content: center;
         flex-direction: column;
 
         .title__where {
-
+            
             font-size: 1.5rem;
 
         }
         .title__ubication {
 
-            color: #3B474E;
+            color: #F26B16;
             text-decoration: underline;
             max-width: 45ch;
             margin-top: 2rem;
@@ -30,20 +29,20 @@
         }
 
         .section__icons {
-
+            
             display: flex;
             flex-direction: column;
             margin-top: 2rem;
             gap: 2rem;
 
             .icons__contact {
-
+                
                 display: flex;
                 align-items: center;
                 gap: 1rem;
 
                 i {
-
+                    color: #F26B16;
                     display: flex;
                     align-items: center;
 
@@ -56,13 +55,13 @@
     }
 
     .section__form {
-
-        border: 1px solid $wireframe;
+        background-color: white;
+        border: 2px solid #F26B16;;
         padding: 2rem;
         width: 100%;
         height: auto;
         margin-top: 2rem;
-
+        margin-bottom: 2rem;
         .title__contact {
 
             text-align: center;
@@ -96,7 +95,7 @@
             }
 
             input,select {
-
+                
                 margin-top: .7rem;
 
 
@@ -150,11 +149,11 @@
             }
 
             .button__form--send {
-
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: $wireframe;
+                background-color: #F26B16;
+                box-shadow:  2px 1px 2px rgb(63, 6, 197);
                 padding: 1rem;
                 color: white;
                 width: 100%;

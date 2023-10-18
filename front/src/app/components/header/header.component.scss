@@ -1,4 +1,6 @@
 nav {
+  border-bottom: 1px solid rgb(81, 112, 236);
+  background-color: #FF6600;
   z-index: 1;
   position: sticky;
   top: 0;
@@ -10,9 +12,12 @@ nav {
   transition: 0.3s ease-out;
   backdrop-filter: blur(8px) brightness(1.2);
   -webkit-backdrop-filter: blur(8px) brightness(1.2);
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  color: rgb(0, 0, 0);
-  font-size: 1em;
+  //text-shadow: 1px 1px 5px rgb(183, 181, 181);
+  font-weight: 600;
+  color: rgb(28, 28, 128);
+  text-shadow:  2px 1px 2px rgb(142, 139, 139);
+  //color: rgb(0, 0, 0);
+  font-size: 1.3em;
 
   &.mask {
     top: 150px;
@@ -33,7 +38,10 @@ nav {
     -webkit-mask-position: left bottom, top left;
   }
 }
-
+.borderImg{
+  background-color: white;
+  border: 3px solid #1E40A5;
+}
 nav.is-hidden {
   transform: translateY(-100%);
 }
@@ -57,26 +65,31 @@ a {
     display: flex;
   }
 
-  li {
+  li  {
     margin-left: 1.5em;
   }
 }
 
 .cursos {
+
+  background-color: #FF6600;
   z-index: 1001;
   border: solid black 1px;
   border-radius: 20px;
 }
 
 .cursos li {
+
   padding: 5px 10px 5px 10px;
   border-radius: 20px;
   z-index: 1001;
 
 }
-
+//desplegable
 .cursos li a {
-  color: rgb(0, 0, 0);
+  font-weight: 600;
+  color: rgb(28, 28, 128);
+  text-shadow:  2px 1px 2px rgb(142, 139, 139);
   font-size: 1em;
   margin: 1px 5px;
   border-radius: 20px;
@@ -95,6 +108,10 @@ a {
 
 .menu-hamburguesa {
   display: none;
+}
+
+.usuarioLogueado{
+  color: #FF6600;
 }
 
 /************************************************************************************/

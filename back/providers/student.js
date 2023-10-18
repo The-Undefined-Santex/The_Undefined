@@ -52,6 +52,7 @@ const createStudent = async (student) => {
     const newStudent = await Student.create(student);
     return newStudent;
   } catch (error) {
+    console.error('Error al crear el estudiante:', error);
     throw new Error('Error al crear el estudiante');
   }
 };
@@ -82,7 +83,7 @@ const updateStudent = async (id, student) => {
     if (student.ContactInformation) {
       await ContactInformation.update(student.ContactInformation, {
         where: {
-          id: student.id_contact_information,
+          id: student.contactInformationId,
         },
       });
     }
@@ -90,7 +91,7 @@ const updateStudent = async (id, student) => {
     if (student.User) {
       await User.update(student.User, {
         where: {
-          id: student.id_user,
+          id: student.userId,
         },
       });
     }

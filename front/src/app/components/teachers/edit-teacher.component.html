@@ -1,0 +1,86 @@
+<div class="py-8">
+    <p-toast position="top-center" ></p-toast>
+    <h1 class="pb-5 text-center">Editar un Profesor</h1>
+    <form class="flex flex-column align-items-center py-5" >
+
+        <div class="flex flex-row gap-8 my-5">
+
+            <div class="flex flex-row gap-8 my-5">
+                
+                <div>
+                    <div class="field ">
+                        <label class="font-bold" for="firstName">Nombre</label>
+                        <input class="px-8" type="text" pInputText id="firstName" name="firstName"
+                        [(ngModel)]="teacher.firstName" >
+    
+                    </div>
+        
+                    <div class="field ">
+                        <label class="font-bold" for="lastName">Apellido</label>
+                        <input class="px-8" type="text" pInputText id="lastName" name="lastName"
+                        [(ngModel)]="teacher.lastName" >
+    
+                    </div>
+        
+                    <div class="field ">
+                        <label class="font-bold" for="dni">DNI</label>
+                        <input class="px-8" type="text" pInputText id="dni" name="dni"
+                        [(ngModel)]="teacher.dni" >
+                    </div>
+                </div>
+
+                <div>
+                    <div class="field ">
+                        <label class="font-bold" for="birth_date">Fecha de Nacimiento</label>
+                        <input class="px-8" type="date" pInputText id="birth_date" name="birth_date"
+                        [(ngModel)]="teacher.birth_date" >
+    
+                    </div>
+
+                    <div class="field">
+                        <label class="font-bold" for="phone_number">Telefono</label>
+                        <input class="px-8" type="number" pInputText id="phone_number" 
+                        name="phone_number" [(ngModel)]="teacher.ContactInformation.phone_number">
+                    </div>
+    
+                    <div class="field">
+                        <label class="font-bold" for="country">Pais</label>
+                        <input class="px-8" type="text" pInputText id="country"
+                        name="country" [(ngModel)]="teacher.ContactInformation.country" >
+                    </div>
+    
+
+                </div>
+
+                <div>
+                    <div class="field">
+                        <label class="font-bold" for="state">Estado</label>
+                        <input class="px-8" type="text" pInputText id="state"
+                        name="state" [(ngModel)]="teacher.ContactInformation.state">
+                    </div>
+    
+                    <div class="field">
+                        <label class="font-bold" for="address">Direccion</label>
+                        <input class="px-8" type="text" pInputText id="address" 
+                        name="address" [(ngModel)]="teacher.ContactInformation.address">
+                    </div>
+
+                    <div class="field">
+                        <label class="font-bold" for="email">Correo</label>
+                        <input class="px-8" type="email" pInputText id="email"
+                        name="email" [(ngModel)]="teacher.ContactInformation.email">
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+        <div class="flex gap-8">
+            <p-button label="Actualizar" 
+            styleClass="p-button-raised my-5" (onClick)="update()"></p-button>
+            <p-button  label="volver" 
+            styleClass="p-button-raised my-5" [routerLink]="['/teachers']" ></p-button>
+        </div>
+        
+    </form>
+</div>

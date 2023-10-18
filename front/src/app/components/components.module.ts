@@ -28,19 +28,24 @@ import { MenuModule } from 'primeng/menu';
 import { PanelModule } from 'primeng/panel';
 import { ToolbarModule } from 'primeng/toolbar';
 import { InputTextModule } from 'primeng/inputtext';
+
+import { ConfirmDialog, ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TableModule } from 'primeng/table';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { TableModule } from 'primeng/table';
-
 
 import { AllCoursesRoutingModule } from './all-courses-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormInscrCoursesComponent } from './courses/form-inscr-courses/form-inscr-courses.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ResultPipe } from './pipes/result.pipe';
+
+import { TeachersComponent } from './teachers/teachers.component';
+import { EditTeacherComponent } from './teachers/edit-teacher.component';
+import { NewTeachersComponent } from './teachers/new-teachers.component';
 
 import { CrudCourseComponent } from './crud-course/crud-course.component';
 import { UpdateCoursesComponent } from './update-courses/update-courses.component';
@@ -73,8 +78,16 @@ import { AdminPlatformComponent } from './admin-platform/admin-platform.componen
                   PayTransfCourseComponent, 
                   AllCoursesComponent, 
                   FormInscrCoursesComponent, 
-                  FilterPipe, ResultPipe, CrudCourseComponent, UpdateCoursesComponent, CreateCourseComponent,  CustomDatePipe, 
+
+                  CrudCourseComponent, UpdateCoursesComponent, CreateCourseComponent,  CustomDatePipe, 
                   CrudStudentsComponent, UpdateStudentsComponent, CreateStudentComponent, AdminPlatformComponent, 
+
+
+                  FilterPipe, ResultPipe, TeachersComponent, EditTeacherComponent, NewTeachersComponent, 
+
+                  CrudCourseComponent, UpdateCoursesComponent, CreateCourseComponent,  CustomDatePipe, 
+
+
                 ],
   imports: [
     CommonModule,
@@ -97,6 +110,7 @@ import { AdminPlatformComponent } from './admin-platform/admin-platform.componen
     CalendarModule,
     InputNumberModule,
     TableModule
+
     
   ],
   exports: [
@@ -104,8 +118,14 @@ import { AdminPlatformComponent } from './admin-platform/admin-platform.componen
     LandingCoursesComponent,
     HeaderComponent,
     FooterComponent,
-    BannerComponent
+    BannerComponent,
   ],
-  providers: [],
+  providers: [
+    MessageService,
+    ConfirmationService,
+    ConfirmDialogModule,
+    ConfirmDialog,
+    ToastModule
+  ],
 })
 export class ComponentsModule {}

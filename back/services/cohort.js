@@ -1,11 +1,11 @@
 const { cohortProvider } = require('../providers');
 
-const enrollStudentInCourse = (courseId, studentId) => {
+const createCohort = (cohortData) => {
   try {
-    const enrolledStudent = cohortProvider.enrollStudentInCourse(courseId, studentId);
+    const enrolledStudent = cohortProvider.createCohort(cohortData);
     return enrolledStudent;
   } catch (error) {
-    throw new Error('Error al matricular al estudiante');
+    throw new Error('Error al crear la cohort');
   }
 };
 
@@ -27,8 +27,28 @@ const getCohortById = (cohortId) => {
   }
 };
 
+const updateCohort = (cohortId, cohortData) => {
+  try {
+    const updatedCohort = cohortProvider.updateCohort(cohortId, cohortData);
+    return updatedCohort;
+  } catch (error) {
+    throw new Error('Error al actualizar la cohorte');
+  }
+};
+
+const deleteCohort = (cohortId) => {
+  try {
+    const deletedCohort = cohortProvider.deleteCohort(cohortId);
+    return deletedCohort;
+  } catch (error) {
+    throw new Error('Error al eliminar la cohorte');
+  }
+};
+
 module.exports = {
-  enrollStudentInCourse,
+  createCohort,
   getAllCohorts,
   getCohortById,
+  updateCohort,
+  deleteCohort,
 };
