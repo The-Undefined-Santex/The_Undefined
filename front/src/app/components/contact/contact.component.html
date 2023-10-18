@@ -17,7 +17,7 @@
 
     <article class="section__form">
 
-        <h2 class="title__contact">Contacto</h2>
+        <h2 class="title__contact">Contáctanos</h2>
 
         <form class="form__send" (ngSubmit)="sendEmail($event)" [formGroup]="myForm">
 
@@ -47,7 +47,7 @@
                 Metodos de consulta (Opcional)
                 <select name="options__consultation" class="options__consultation" formControlName="options">
 
-                    <option hidden selected>Métodos de consulta</option>
+                    <option disabled hidden selected>Métodos de consulta</option>
                     <option value="Error en el sistema">Error en el sistema</option>
                     <option value="Precio de los cursos">Precio de los cursos</option>
     
@@ -74,3 +74,5 @@
     </article>
 
 </section>
+
+<p-toast position="top-right" styleClass="opacity-100"></p-toast>

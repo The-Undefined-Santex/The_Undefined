@@ -57,6 +57,17 @@ const updateUser = async (id, userData) => {
   }
 };
 
+const validerUser = async (user, pass) => {
+  console.log('vamos');
+  try {
+    const userFound = await userProvider.validerUser(user, pass);
+    return userFound;
+  } catch (err) {
+    console.error('Error when Validating User');
+    throw err;
+  }
+};
+
 module.exports = {
-  createUser, getUserById, getAllUsers, deleteUser, updateUser,
+  createUser, getUserById, getAllUsers, deleteUser, updateUser, validerUser,
 };

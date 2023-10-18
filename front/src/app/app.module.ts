@@ -36,10 +36,7 @@ import { AdminModel } from './core/model/adminModel';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
-  ],
-  providers: [
-    
-  ],
+  ],                             
 
   providers: [Student, AdminModel],
   bootstrap: [AppComponent],

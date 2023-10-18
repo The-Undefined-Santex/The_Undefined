@@ -23,7 +23,7 @@
             [responsiveOptions]="coursesService.responsiveOptions" [value]="coursesService.courses">
             <ng-template let-course pTemplate="item" >
                 <div class="flex justify-content-center align-items-center py-5 px-3">
-                    <div class="card" style="width: 80%; text-align: center;">
+                    <div class="card" style="width: 80%; text-align: left;">
                         <div class="card__content" >
                             <h2 [style]="{height: '3em'}">
                                 {{ course.title }}
@@ -40,7 +40,7 @@
                                     class="card__price--bold">{{coursesService.getRoundedPrice(course.price, course.due)}}</span>
                             </p>
                             <p class="card__starter mb-3">
-                                fecha de inicio: {{ course.start_date }}
+                                fecha de inicio: {{ course.start_date | date:'dd-MM-yyyy' :'UTC'}}
                             </p>
                             <div class="card__line"></div>
 
@@ -49,7 +49,7 @@
                                 <a [routerLink]="['/courses', course.id]" pButton label="ver detalle del curso" type="button"
                                     styleClass="p-mr-2 w-full uppercase" class="footer__button--info">
                                 </a>
-                                <a [routerLink]="['/form-inscr-courses', course.id]" pButton label="Inscríbete" type="button" styleClass="p-mr-2 mt-5 w-full uppercase"
+                                <a [routerLink]="['/create-student']" pButton label="Inscríbete" type="button" styleClass="p-mr-2 mt-5 w-full uppercase"
                                     class="footer__button--apply"></a>
 
                             </footer>

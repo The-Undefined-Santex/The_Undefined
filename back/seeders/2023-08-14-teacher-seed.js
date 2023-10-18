@@ -9,7 +9,7 @@ module.exports = {
         lastName: 'Doe',
         birth_date: '2000-01-01',
         contactInformationId: 4,
-        userId: 8,
+        userId: 5,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -19,7 +19,7 @@ module.exports = {
         lastName: 'Smith',
         birth_date: '2000-01-01',
         contactInformationId: 5,
-        userId: 7,
+        userId: 6,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -29,7 +29,7 @@ module.exports = {
         lastName: 'Johnson',
         birth_date: '2000-01-01',
         contactInformationId: 6,
-        userId: 6,
+        userId: 7,
         createdAt: new Date(),
         updatedAt: new Date()
       },

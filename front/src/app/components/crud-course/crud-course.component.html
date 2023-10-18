@@ -9,13 +9,16 @@
         </ng-template>
     </p-confirmDialog>
 
-    <p-button id="createButton" [routerLink]="['/course']" label="Crear Curso"></p-button>
-
+  
+    
+    
 
 <p-table [value]="courses" [tableStyle]="{'min-width': '60rem'}">
     <ng-template pTemplate="caption">
+    <h1 style="text-align: center;">Listado de cursos</h1>
         <div class="flex align-items-center justify-content-between">
-            Listado de cursos
+            
+            <p-button id="createButton" [routerLink]="['/course']" label="Crear Curso"></p-button>
         </div>
     </ng-template>
     <ng-template pTemplate="header">

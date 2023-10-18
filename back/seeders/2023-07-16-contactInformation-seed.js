@@ -4,7 +4,6 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('ContactInformations', [
       {
-        
         phone_number: '123456789',
         country: 'Country 1',
         state: 'State 1',
@@ -23,7 +22,6 @@ module.exports = {
         updatedAt: new Date(),
       },
        {
-       
         phone_number: '237654321',
         country: 'Country 3',
         state: 'State 3',

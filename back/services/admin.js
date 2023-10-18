@@ -1,4 +1,6 @@
 const { adminProvider } = require('../providers');
+const { userTypeMiddleware, passwordMiddleware } = require('../middleware');
+const { User, ContactInformation } = require('../models');
 
 const getAllAdmins = async () => {
   try {
@@ -23,10 +25,31 @@ const getAdminsById = async (id) => {
 
 const createAdmin = async (admin) => {
   try {
+    // Crea el usuario con el mail del estudiante
+    // y la contraseña es el documento de identidad del estudiante.
+    // Esto es para que el usuario pueda iniciar sesión con el documento de identidad.
+
+    const pass = await passwordMiddleware.hashPassword((admin.dni).toString());
+    const newUser = await User.create({
+      userName: admin.ContactInformation.email,
+      password: pass,
+      rol: userTypeMiddleware.CATEGORIA_0,
+    });
+
+    // Asigna el id del usuario al estudiante
+    admin.userId = newUser.id;
+
+    const newContactInformation = await ContactInformation.create(admin.ContactInformation);
+
+    // Asigna el id del contacto al estudiante
+    admin.contactInformationId = newContactInformation.id;
+
+    // Llama al proveedor para crear el estudiante
     const newAdmin = await adminProvider.createAdmin(admin);
     return newAdmin;
   } catch (error) {
-    throw new Error('Error en el servicio al crear el Admin');
+    console.error('Error al crear el Administrador:', error);
+    throw new Error('Error al crear el Administrador');
   }
 };
 

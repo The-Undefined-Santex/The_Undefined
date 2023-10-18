@@ -14,20 +14,20 @@ export class TestimonialsComponent {
     "description": "Gracias por este increíble servicio! Su atención personalizada y contenido de calidad super.",
     "image": "https://i.pravatar.cc/100/250",
     "role": "Programmer Analyst II",
-    "alt": "Foto de Ruthann Durban - Testimonio"
+    "alt": "Kinesióloga"
   }, {
     "id": 2,
     "full_name": "Priscilla Rigney",
     "description": "Agradezco enormemente a esta empresa por brindarme oportunidades de capacitación.",
     "image": "https://i.pravatar.cc/100/200/200",
-    "role": "Technical Writer",
+    "role": "Abogado",
     "alt": "Foto de Priscilla Rigney - Testimonio"
   }, {
     "id": 3,
     "full_name": "Bea Kensitt",
     "description": "No puedo expresar lo agradecido que estoy por haber encontrado esta plataforma.",
     "image": "https://i.pravatar.cc/100/220",
-    "role": "Operator",
+    "role": "Asesor de ventas",
     "alt": "Foto de Bea Kensitt - Testimonio"
   }];
 

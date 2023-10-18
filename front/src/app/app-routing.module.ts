@@ -77,6 +77,10 @@ const routes: Routes = [
     loadChildren: () => import('../app/components/edit-student-routing.module').then(m => m.EditStudentRouting)
   },
   {
+    path: 'platform-students/:id',
+    loadChildren: () => import('../app/components/platform-students-routing.module').then(m => m.PlatformStudentsRouting)
+  },
+  {
     path: 'adminPlatform',
     loadChildren: () => import('../app/components/adminPlatform-routing.module').then(m => m.adminPlatformRoutingModule)
   },

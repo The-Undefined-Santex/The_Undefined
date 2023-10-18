@@ -8,9 +8,7 @@ const getAllTeachers = async () => {
         include: [
           {
             model: ContactInformation,
-            attributes: [
-              'id',
-              'phone_number',
+            attributes: ['id', 'phone_number',
               'country',
               'state',
               'address',
@@ -34,9 +32,7 @@ const getTeachersById = async (id) => {
       include: [
         {
           model: ContactInformation,
-          attributes: [
-            'id',
-            'phone_number',
+          attributes: ['id', 'phone_number',
             'country',
             'state',
             'address',

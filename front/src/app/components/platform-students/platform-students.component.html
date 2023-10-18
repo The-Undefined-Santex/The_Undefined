@@ -1,0 +1,55 @@
+<section class="p-5 flex justify-content-center gap-8">
+
+    <h1>Hola {{student.first_name}} Bienvenido!</h1>
+
+    <div>
+
+        <header>
+
+            <h2 class="font-bold">Información del estudiante</h2>
+
+        </header>
+
+        <article>
+
+            <p>Legajo: {{student.id}}</p>
+            <p>Nombre: {{student.first_name}}</p>
+            <p>Apellido: {{student.last_name}}</p>
+            <p>Fecha de nacimiento: {{student.birth_date | date:'dd-MM-yyyy' :'UTC'}}</p>
+            <p>Situación de pago: {{student.situation}}</p>
+
+
+        </article>
+
+    </div>
+
+    <div>
+
+        <header>
+
+            <h2 class="font-bold">Información de la cohorte</h2>
+
+        </header>
+
+        <article *ngFor="let cohort of student.Cohorts">
+
+            <header>
+
+                <h2 class="font-medium">{{ cohort.Course.title }}</h2>
+
+            </header>
+
+            <time><span class="font-semibold">Horario:</span> {{ cohort.Course.schedules }}</time>
+
+            <p><span  class="font-semibold">Profesor:</span> {{ cohort.Teacher.firstName }} {{ cohort.Teacher.lastName }}</p>
+
+            <figure>
+                <img [src]="cohort.Course.banner" alt="{{ cohort.Course.title }}" width="200">
+            </figure>
+
+
+        </article>
+
+    </div>
+
+</section>
